@@ -1,0 +1,9 @@
+.vertical {
+  border-left: 1px solid var(--text-default);
+  height: 100%;
+  left: 50%;
+}
+
+.footer-link-text {
+  @apply text-sm font-inter text-gray-500 hover:text-accent;
+}

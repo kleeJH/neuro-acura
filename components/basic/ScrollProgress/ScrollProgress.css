@@ -1,0 +1,10 @@
+.progress-bar {
+  position: fixed;
+  z-index: 51;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  transform-origin: 0%;
+  @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+}

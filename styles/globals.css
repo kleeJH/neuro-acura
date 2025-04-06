@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Globals */
+* {
+  @apply scroll-smooth;
+}
+
+li {
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+}
+
+@layer base {
+  :root {
+    --text-default: #09080d;
+    --text-link: #6b7280;
+    --text-sectionSubText: #ffb8c8;
+    --antd-button-hover: #d9d9d9;
+
+    --background: #fcfcfd;
+    --foreground: #ffb8c8;
+
+    --primary: #d33a5e;
+    --secondary: #ffb8c8;
+    --tertiary: #fcfcfd;
+    --accent: #ff6f8b;
+    --drop-shadow-color: rgba(9, 8, 13, 0.25);
+
+    --clr-1: #ff6f8b;
+    --clr-2: #ff8b6f;
+    --clr-3: #ffbb6f;
+    --clr-4: #ff6fbb;
+    --clr-5: #d46fff;
+
+    --scroll-to-top-color: rgba(255, 111, 139, 0.3);
+    --star-drop-shadow: rgba(255, 187, 111, 0.3);
+  }
+  .dark {
+    --text-default: #f3f2f7;
+    --text-sectionSubText: #6b7280;
+    --antd-button-hover: #6b7280;
+
+    --background: #050816;
+    --foreground: #262626;
+
+    --primary: #c32c50;
+    --secondary: #ffb8c8;
+    --tertiary: #262626;
+    --accent: #ff6f8b;
+    --drop-shadow-color: rgba(255, 255, 255, 0.2);
+    --star-drop-shadow: rgba(255, 187, 111, 0.3);
+  }
+}
+
+@layer utilities {
+  .test1 {
+    display: block;
+    text-align-last: justify;
+  }
+}
+
+/* Section Wrapper */
+.hash-span {
+  margin-top: -100px;
+  padding-bottom: 100px;
+  display: block;
+}
+
+/* Background */
+.moving-grid-background {
+  will-change: transform;
+  background-size: 3rem 3rem;
+  background-image: linear-gradient(
+      to right,
+      var(--foreground) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--foreground) 1px, transparent 1px);
+  animation: movingbackground 90s linear infinite !important;
+}
+
+@keyframes movingbackground {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, -50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moving-grid-background {
+    animation: none !important;
+  }
+}
+
+.animate-bg-gradient-to-center {
+  animation: bg-to-center 1s 0.75s ease 1 forwards;
+}
+.animate-bg-gradient-to-center-title {
+  animation: bg-to-center 1s 0.95s ease 1 forwards;
+}
+
+@keyframes bg-to-center {
+  to {
+    background-position: center;
+  }
+}
+/* General */
+.container {
+  @apply max-w-[1400px] mx-auto sm:px-16 px-6 w-full;
+}
+
+/* Not Found */
+.stars {
+  background-size: 200px 200px;
+  background-image: radial-gradient(
+      2px 2px at 40px 60px,
+      #ccc,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 20px 50px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 30px 100px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40px 60px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 110px 90px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 190px 150px, var(--accent), rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+}
+
+.stars:first-of-type {
+  animation: stars-move-right-1 200s linear infinite;
+}
+
+.stars:nth-of-type(2) {
+  background-image: radial-gradient(
+      2px 2px at 25px 35px,
+      #ccc,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 55px 20px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 69px 42px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 42px 69px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 32px 90px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 150px 190px, var(--accent), rgba(0, 0, 0, 0));
+  animation: stars-move-right-2 111s linear infinite;
+}
+
+.stars:nth-of-type(3) {
+  background-image: radial-gradient(
+      2px 2px at 60px 40px,
+      #ccc,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 50px 20px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 100px 30px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 60px 40px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 110px, var(--accent), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 150px 190px, var(--accent), rgba(0, 0, 0, 0));
+  animation: stars-move-right-3 69s linear infinite;
+}
+
+@keyframes stars-move-right-1 {
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes stars-move-right-2 {
+  to {
+    transform: translateX(100%) scale(2);
+  }
+}
+@keyframes stars-move-right-3 {
+  to {
+    transform: translateX(100%) scale(3);
+  }
+}
+
+.animate-logofly {
+  transform: translateX(-33vw);
+  animation: logofly 15s 2s linear infinite forwards;
+}
+
+@keyframes logofly {
+  0% {
+    transform: translateX(-33vw);
+  }
+  100% {
+    transform: translateX(200vw) rotate(1337deg);
+  }
+}
+
+/* Background Gradients */
+.black-gradient {
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.violet-gradient {
+  background: #d95eff;
+  background: linear-gradient(-90deg, #d95eff 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #d95eff 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}
+
+.cyan-gradient {
+  background: #5ed9ff;
+  background: linear-gradient(-90deg, #5ed9ff 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #5ed9ff 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}
+
+.green-pink-gradient {
+  background: "#00cea8";
+  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+}
+
+/* Text Gradients */
+.orange-text-gradient {
+  @apply bg-gradient-to-b from-[#f5af19] to-[#f12711]  bg-clip-text text-transparent;
+}
+
+.purple-blue-text-gradient {
+  @apply bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent;
+}
+
+.blue-pink-text-gradient {
+  @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent;
+}
+
+.pink-text-gradient {
+  @apply bg-gradient-to-r from-red-500 via-pink-600 to-purple-500 bg-clip-text text-transparent;
+}
+
+/* Square Buttons */
+.square-button {
+  @apply rounded-lg p-2 duration-300 bg-foreground hover:bg-accent border-solid border-[1px] border-accent select-none focus:outline-none focus-visible:ring-2 shadow shadow-accent cursor-pointer;
+}
+
+/* Border gradient animations */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 360deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.card-border-gradient {
+  position: relative;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+  animation: rotation 5s linear infinite;
+}
+
+.card-border-gradient::after {
+  content: "";
+  position: absolute;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  inset: 0.5rem;
+  animation: rotation 20s linear infinite;
+  filter: blur(1.5rem);
+}
+
+/* Shiny Button Animation */
+.shiny-button-dark {
+  background: linear-gradient(
+    var(--gradient-angle),
+    hsla(0, 0%, 100%, 0.5),
+    hsla(0, 0%, 100%, 0.1),
+    #fff,
+    hsla(0, 0%, 100%, 0.3)
+  ) !important;
+  animation: rotation 5s linear infinite reverse;
+}
+
+.shiny-button-dark {
+  background: linear-gradient(
+    var(--gradient-angle),
+    hsla(0, 0%, 100%, 0.5),
+    hsla(0, 0%, 100%, 0.1),
+    #fff,
+    hsla(0, 0%, 100%, 0.3)
+  ) !important;
+  animation: rotation 5s linear infinite reverse;
+}

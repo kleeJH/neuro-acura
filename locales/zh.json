@@ -1,0 +1,38 @@
+{
+  "Locale": {
+    "en": "英語",
+    "zh": "中文"
+  },
+
+  "Notification": {
+    "Button": {}
+  },
+
+  "Index": {
+    "title": "你好世界!"
+  },
+
+  "Footer": {
+    "Top": {
+      "Motto": "通过神经反馈疗法彻底改变心理和认知健康。",
+      "Category": {
+        "quickLinks": "快速导航",
+        "connect": "连接"
+      },
+      "SubCategory": {
+        "aboutUs": "关于我们",
+        "ourProgrammes": "我们的程式",
+        "contactUs": "联系我们",
+        "career": "职业生涯"
+      }
+    },
+
+    "Bottom": {
+      "madeWith": "由俊宏开发。",
+      "socialMedia": "社交媒体",
+      "termsOfService": "服务条款",
+      "privacy": "隐私政策",
+      "allRightsReserved": "版权所有"
+    }
+  }
+}

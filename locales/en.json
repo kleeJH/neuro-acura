@@ -1,0 +1,38 @@
+{
+  "Locale": {
+    "en": "English",
+    "zh": "Chinese"
+  },
+
+  "Notification": {
+    "Button": {}
+  },
+
+  "Index": {
+    "title": "Hello world!"
+  },
+
+  "Footer": {
+    "Top": {
+      "Motto": "Revolutionizing Mental and Cognitive Health Through Neurofeedback Therapy.",
+      "Category": {
+        "quickLinks": "Quick Links",
+        "connect": "Connect"
+      },
+      "SubCategory": {
+        "aboutUs": "About Us",
+        "ourProgrammes": "Our Programmes",
+        "contactUs": "Contact Us",
+        "career": "Careers"
+      }
+    },
+
+    "Bottom": {
+      "madeWith": "Developed by Jun Hong.",
+      "socialMedia": "Social Media",
+      "termsOfService": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "allRightsReserved": "All rights reserved"
+    }
+  }
+}

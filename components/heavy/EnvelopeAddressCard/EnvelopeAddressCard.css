@@ -1,0 +1,42 @@
+/* Envelope */
+.envelope {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(198, 40, 40) 0,
+    rgb(198, 40, 40) 5%,
+    rgb(255, 255, 255) 5%,
+    rgb(255, 255, 255) 10%,
+    rgb(21, 101, 192) 10%,
+    rgb(21, 101, 192) 15%,
+    rgb(255, 255, 255) 15%,
+    rgb(255, 255, 255) 20%,
+    rgb(198, 40, 40) 20%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.envelope:hover {
+  animation: gradientAnimation 12s linear infinite reverse;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(198, 40, 40) 0,
+    rgb(198, 40, 40) 5%,
+    rgb(255, 255, 255) 5%,
+    rgb(255, 255, 255) 10%,
+    rgb(21, 101, 192) 10%,
+    rgb(21, 101, 192) 15%,
+    rgb(255, 255, 255) 15%,
+    rgb(255, 255, 255) 20%,
+    rgb(198, 40, 40) 20%
+  );
+  background-size: 200% 100%;
+}

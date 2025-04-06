@@ -1,0 +1,22 @@
+/* Shiny button - SEE: @property --gradient-angle AND @keyframes gradient-rotate in globals.css */
+.shiny-button {
+  background: linear-gradient(
+    var(--gradient-angle),
+    hsla(348, 100%, 72%, 0.7),
+    hsla(348, 100%, 72%, 0.3),
+    #ff6f8b,
+    hsla(348, 100%, 72%, 0.5)
+  ) !important;
+  animation: rotation 5s linear infinite reverse;
+}
+
+.shiny-button-dark {
+  background: linear-gradient(
+    var(--gradient-angle),
+    hsla(0, 0%, 100%, 0.5),
+    hsla(0, 0%, 100%, 0.1),
+    #fff,
+    hsla(0, 0%, 100%, 0.3)
+  ) !important;
+  animation: rotation 5s linear infinite reverse;
+}
