@@ -22,7 +22,7 @@ const SignIn = () => {
           <Flex direction="column" align="center" gap="4">
             <Image
               src={LowDefLogo}
-              alt="NeuroAcura's Logo"
+              alt="NeuroAcura Logo"
               width={64}
               height={64}
               style={{
@@ -134,7 +134,7 @@ const SignIn = () => {
             <Box position="relative">
               <Flex direction="column" gap="2">
                 <Text size="2" mt="4">
-                  Don't have an account?
+                  Don&apos;t have an account?
                 </Text>
                 <Link href="/sign-up">
                   <Button

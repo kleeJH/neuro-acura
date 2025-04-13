@@ -20,7 +20,7 @@ const Footer = ({ hidden = false }: { hidden?: boolean }) => {
               <div className="flex items-center select-none">
                 <Image
                   src={Config.logoLowDef}
-                  alt="NeuroAcura's Logo"
+                  alt="NeuroAcura Logo"
                   width={60}
                   height={60}
                   className="drop-shadow-md"

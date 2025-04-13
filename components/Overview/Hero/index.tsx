@@ -43,7 +43,7 @@ const Hero = () => {
             >
               <Image
                 src={Config.logoLowDef}
-                alt="NeuroAcura's Logo"
+                alt="NeuroAcura Logo"
                 width={170}
                 height={170}
                 className="px-4 py-2 drop-shadow-md"

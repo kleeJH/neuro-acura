@@ -4,10 +4,10 @@ import type {
   StaticImageData,
   StaticImport,
 } from "next/dist/shared/lib/get-img-props";
-import LowDefLogo from "./public/assets/images/logos/icon1.png";
-import TiltCardPic1 from "./public/assets/images/cards/card-sportsDay.jpg";
-import TiltCardPic2 from "./public/assets/images/cards/card-malaysiaDay.jpg";
-import TiltCardPic3 from "./public/assets/images/cards/card-plants.jpg";
+import LowDefLogo from "@public/assets/images/logos/icon1.png";
+import TiltCardPic1 from "@public/assets/images/cards/card-sportsDay.jpg";
+import TiltCardPic2 from "@public/assets/images/cards/card-malaysiaDay.jpg";
+import TiltCardPic3 from "@public/assets/images/cards/card-plants.jpg";
 
 const Config: {
   logoLowDef: StaticImageData;

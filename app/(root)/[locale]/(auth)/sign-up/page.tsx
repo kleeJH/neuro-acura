@@ -71,7 +71,7 @@ const SignUp = () => {
           <Flex direction="column" align="center" gap="4">
             <Image
               src={LowDefLogo}
-              alt="NeuroAcura's Logo"
+              alt="NeuroAcura Logo"
               width={64}
               height={64}
               style={{

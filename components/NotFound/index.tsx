@@ -20,7 +20,7 @@ export default function NotFound({
       <div className="absolute top-0 flex w-full h-screen flex-col items-center justify-center gap-8 overflow-hidden">
         <Image
           className="animate-logofly absolute left-0 -z-10 mx-auto opacity-80"
-          alt="TDJ's Logo"
+          alt="NeuroAcura Logo"
           src={Config.logoLowDef}
           height="70"
           width="60"
