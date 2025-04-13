@@ -1,5 +1,6 @@
 import Config from "@config";
 import "@styles/globals.css";
+import "@radix-ui/themes/styles.css";
 
 import type React from "react";
 

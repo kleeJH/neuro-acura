@@ -14,12 +14,12 @@ const styles = {
 
   sectionWrapper: "mb-10",
   sectionHeadText:
-    "pink-text-gradient font-inter font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] drop-shadow-md",
+    "orange-text-gradient font-inter font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] drop-shadow-md",
   sectionSubText:
     "font-satoshi sm:text-[18px] text-[14px] text-textLink uppercase tracking-wider",
 
   withinSectionHeadText:
-    "font-satoshi text-[25px] drop-shadow-md mt-14 pink-text-gradient",
+    "font-satoshi text-[25px] drop-shadow-md mt-14 orange-text-gradient",
   withinSectionSubText:
     "font-inter text-textDefault text-[17px] max-w-3xl leading-[30px]",
 

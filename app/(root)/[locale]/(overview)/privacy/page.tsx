@@ -4,7 +4,7 @@ import { styles } from "@styles/sharedStyles";
 
 const PrivacyPage = () => {
   return (
-    <div className="relative min-h-[calc(80vh)] pt-20">
+    <>
       <h1 className={styles.heroHeadText}>Privacy Policy</h1>
       <br />
       <p className={styles.withinSectionSubText}>
@@ -84,7 +84,7 @@ const PrivacyPage = () => {
       <p className={`${styles.withinSectionSubText} italic`}>
         Last modified: 06/04/2025
       </p>
-    </div>
+    </>
   );
 };
 

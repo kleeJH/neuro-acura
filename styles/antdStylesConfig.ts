@@ -24,8 +24,9 @@ export const AntdTheme: ThemeConfig = {
       contentBg: "var(--background)",
     },
     FloatButton: {
+      colorPrimary: "var(--foreground)",
       colorBgElevated: "var(--tertiary)",
-      colorFillContent: "var(--scroll-to-top-color)",
+      colorFillContent: "var(--primary)",
     },
     Layout: {
       footerBg: "var(--background)",

@@ -4,7 +4,7 @@ import { styles } from "@styles/sharedStyles";
 
 const TermsOfServicePage = () => {
   return (
-    <div className="relative min-h-[calc(80vh)] pt-20">
+    <>
       <h1 className={styles.heroHeadText}>Terms and Conditions</h1>
 
       <h2 className={styles.withinSectionHeadText}>1. Terms</h2>
@@ -128,7 +128,7 @@ const TermsOfServicePage = () => {
         Any claim related to NeuroAcura&apos;s Website shall be governed by the
         laws of my without regards to its conflict of law provisions.
       </p>
-    </div>
+    </>
   );
 };
 

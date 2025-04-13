@@ -5,14 +5,22 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { baseMetadata } from "../metadata";
 import { StyleProviders } from "./[locale]/providers";
+import { Theme } from "@radix-ui/themes";
+
+// Supabase
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = { ...baseMetadata };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+
   return (
     <html suppressHydrationWarning lang={Config.defaultLocale}>
       <head>
@@ -29,7 +37,9 @@ export default function RootLayout({
       <body>
         <SpeedInsights />
         <Analytics />
-        <StyleProviders>{children}</StyleProviders>
+        <StyleProviders>
+          <Theme>{children}</Theme>
+        </StyleProviders>
       </body>
     </html>
   );

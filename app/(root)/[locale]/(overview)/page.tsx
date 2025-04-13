@@ -10,7 +10,7 @@ import Gallery from "@components/Overview/Gallery";
 
 const OverviewPage = () => {
   return (
-    <div className="relative w-full pt-20">
+    <>
       <Hero />
       <About />
       {/* <Programme /> */}
@@ -18,7 +18,7 @@ const OverviewPage = () => {
       {/* <Location /> */}
       {/* <Contact /> */}
       {/* <Gallery /> */}
-    </div>
+    </>
   );
 };
 

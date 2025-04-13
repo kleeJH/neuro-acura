@@ -24,6 +24,7 @@ const Navigation = ({
   return (
     <>
       <nav
+        style={{ position: "sticky" }}
         className={`${
           bgType === "default" ? "bg-background" : ""
         } z-50 w-full flex items-center py-4 top-0 fixed`}
@@ -36,7 +37,7 @@ const Navigation = ({
           >
             <Image
               src={Config.logoLowDef}
-              alt="TDJ Logo"
+              alt="NeuroAcura Logo"
               width={32}
               height={32}
               className="object-contain drop-shadow-md"
@@ -44,8 +45,8 @@ const Navigation = ({
             <p className="max-sm:hidden font-satoshi font-bold cursor-pointer text-base tracking-wide orange-text-gradient drop-shadow-md">
               NeuroAcura
             </p>
-            <p className="sm:hidden font-bold cursor-pointer text-lg tracking-wide pink-text-gradient drop-shadow-md">
-              TDJ
+            <p className="sm:hidden font-bold cursor-pointer text-lg tracking-wide orange-text-gradient drop-shadow-md">
+              NeuroAcura
             </p>
           </div>
 

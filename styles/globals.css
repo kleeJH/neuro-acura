@@ -19,16 +19,16 @@ li {
   :root {
     --text-default: #09080d;
     --text-link: #6b7280;
-    --text-sectionSubText: #ffb8c8;
+    --text-sectionSubText: #ffcfa6;
     --antd-button-hover: #d9d9d9;
 
     --background: #fcfcfd;
-    --foreground: #ffb8c8;
+    --foreground: #ffcfa6;
 
-    --primary: #d33a5e;
-    --secondary: #ffb8c8;
+    --primary: #e26a2c;
+    --secondary: #ffcfb3;
     --tertiary: #fcfcfd;
-    --accent: #ff6f8b;
+    --accent: #ff8f4c;
     --drop-shadow-color: rgba(9, 8, 13, 0.25);
 
     --clr-1: #ff6f8b;
@@ -48,10 +48,10 @@ li {
     --background: #050816;
     --foreground: #262626;
 
-    --primary: #c32c50;
-    --secondary: #ffb8c8;
+    --primary: #e0582b;
+    --secondary: #ffb185;
     --tertiary: #262626;
-    --accent: #ff6f8b;
+    --accent: #ff7a3d;
     --drop-shadow-color: rgba(255, 255, 255, 0.2);
     --star-drop-shadow: rgba(255, 187, 111, 0.3);
   }
