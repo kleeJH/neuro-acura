@@ -47,6 +47,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CustomLink from "@components/basic/ui/link";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
+import Google from "@public/assets/icons/google.png";
 
 const ForgotPassword = () => {
   return (
@@ -148,7 +149,7 @@ const ForgotPassword = () => {
                 className=""
               >
                 <Image
-                  src="https://developers.google.com/identity/images/g-logo.png"
+                  src={Google}
                   alt="Google Logo"
                   width={24}
                   height={24}
