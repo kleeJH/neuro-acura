@@ -49,7 +49,6 @@
 // }
 
 import { signUpAction } from "@/app/actions";
-import { Message } from "@/components/auth/form-message";
 import SectionWrapper from "@components/basic/SectionWrapper";
 import {
   Card,
@@ -61,17 +60,20 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import Link from "next/link";
+import Image from "next/image";
+import LowDefLogo from "@public/assets/images/logos/icon1.png";
 
-const SignUp = async (props: { searchParams: Promise<Message> }) => {
-  const searchParams = await props.searchParams;
+const SignUp = () => {
   return (
     <Box width="100%" mx="auto" maxWidth="600px">
       <Card asChild variant="classic" size="4">
         <Box px="7">
           <Flex direction="column" align="center" gap="4">
-            <img
-              src="../assets/images/logos/icon1.png"
+            <Image
+              src={LowDefLogo}
               alt="NeuroAcura's Logo"
+              width={64}
+              height={64}
               style={{
                 width: "64px",
                 height: "64px",
