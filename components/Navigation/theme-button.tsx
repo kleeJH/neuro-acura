@@ -16,29 +16,26 @@ const ThemeSwitch = () => {
   }, []);
 
   return (
-    <CustomTooltip
-      children={
-        mounted ? (
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="square-button"
-            onClick={() => {
-              setTheme(resolvedTheme === "dark" ? "light" : "dark");
-            }}
-            type="button"
-          >
-            {resolvedTheme === "dark" && (
-              <Moon aria-hidden="true" className="h-5 w-5" />
-            )}
-            {resolvedTheme === "light" && (
-              <Sun aria-hidden="true" className="h-5 w-5" />
-            )}
-          </motion.button>
-        ) : null
-      }
-      content="Change Theme"
-    />
+    <CustomTooltip content="Change Theme">
+      {mounted ? (
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="square-button"
+          onClick={() => {
+            setTheme(resolvedTheme === "dark" ? "light" : "dark");
+          }}
+          type="button"
+        >
+          {resolvedTheme === "dark" && (
+            <Moon aria-hidden="true" className="h-5 w-5" />
+          )}
+          {resolvedTheme === "light" && (
+            <Sun aria-hidden="true" className="h-5 w-5" />
+          )}
+        </motion.button>
+      ) : null}
+    </CustomTooltip>
   );
 };
 

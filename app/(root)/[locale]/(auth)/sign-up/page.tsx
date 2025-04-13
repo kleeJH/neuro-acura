@@ -159,9 +159,11 @@ const SignUp = () => {
                 style={{ width: "100%" }}
                 className=""
               >
-                <img
+                <Image
                   src="https://developers.google.com/identity/images/g-logo.png"
                   alt="Google Logo"
+                  width={24}
+                  height={24}
                   style={{
                     width: "24px",
                     height: "24px",

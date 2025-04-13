@@ -29,23 +29,19 @@ export default function BackToTopButton() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <CustomTooltip
-          children={
-            <motion.button
-              onClick={scrollToTop}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0, transition: { duration: 0.05 } }}
-              exit={{ opacity: 0, y: 50, transition: { duration: 0.2 } }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="fixed bottom-6 right-6 z-50 square-button"
-            >
-              <ArrowUpToLine className="w-5 h-5" />
-            </motion.button>
-          }
-          content="Back to Top"
-          side="left"
-        />
+        <CustomTooltip content="Back to Top" side="left">
+          <motion.button
+            onClick={scrollToTop}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.05 } }}
+            exit={{ opacity: 0, y: 50, transition: { duration: 0.2 } }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="fixed bottom-6 right-6 z-50 square-button"
+          >
+            <ArrowUpToLine className="w-5 h-5" />
+          </motion.button>
+        </CustomTooltip>
       )}
     </AnimatePresence>
   );
