@@ -1,4 +1,6 @@
-import { signInAction } from "@/app/actions";
+"use client";
+
+import { signInAction } from "@utils/supabase/actions";
 import SectionWrapper from "@components/basic/SectionWrapper";
 import {
   Card,
@@ -14,8 +16,15 @@ import Image from "next/image";
 import CustomLink from "@components/basic/ui/link";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
 import Google from "@public/assets/icons/google.png";
+import { useSearchParams } from "next/navigation";
+import { AuthResponseStatusType } from "@common/enum";
+import CustomCallout from "@components/basic/ui/callout";
 
 const SignIn = () => {
+  const searchParams = useSearchParams();
+  const errorMessage = searchParams.get(AuthResponseStatusType.ERROR);
+  const successMessage = searchParams.get(AuthResponseStatusType.SUCCESS);
+
   return (
     <Box width="100%" mx="auto" maxWidth="600px">
       <Card asChild variant="classic" size="4">
@@ -40,7 +49,7 @@ const SignIn = () => {
               Sign in to your account
             </Text>
           </Flex>
-          <form action="/">
+          <form>
             <Box mb="5">
               <Flex direction="column">
                 <Text
@@ -54,9 +63,11 @@ const SignIn = () => {
                 </Text>
                 <TextField.Root
                   id="email"
+                  name="email"
                   type="email"
                   variant="classic"
-                  placeholder="Enter your email"
+                  placeholder="you@example.com"
+                  required
                   size="3"
                 />
               </Flex>
@@ -64,7 +75,7 @@ const SignIn = () => {
 
             <Box mb="5" position="relative">
               <Box position="absolute" top="0" right="0">
-                <CustomLink href={""} text="Forgot password?" />
+                <CustomLink href="/forgot-password" text="Forgot password?" />
               </Box>
 
               <Flex direction="column">
@@ -79,18 +90,43 @@ const SignIn = () => {
                 </Text>
                 <TextField.Root
                   id="password"
+                  name="password"
                   variant="classic"
                   type="password"
                   placeholder="Enter your password"
+                  required
                   size="3"
                 />
               </Flex>
             </Box>
 
+            {errorMessage && (
+              <Box mb="5" position="relative">
+                <CustomCallout
+                  type="error"
+                  text={errorMessage}
+                  variant="surface"
+                  size="1"
+                />
+              </Box>
+            )}
+
+            {successMessage && (
+              <Box mb="5" position="relative">
+                <CustomCallout
+                  type="success"
+                  text={successMessage}
+                  variant="surface"
+                  size="1"
+                />
+              </Box>
+            )}
+
             <Box mb="5" position="relative">
               <Button
                 variant="solid"
                 type="submit"
+                formAction={signInAction}
                 size="3"
                 style={{ width: "100%", backgroundColor: "var(--primary)" }}
               >

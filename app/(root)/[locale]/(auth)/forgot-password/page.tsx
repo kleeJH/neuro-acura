@@ -32,7 +32,7 @@
 //   );
 // }
 
-import { signInAction } from "@/app/actions";
+import { forgotPasswordAction } from "@utils/supabase/actions";
 import SectionWrapper from "@components/basic/SectionWrapper";
 import {
   Card,
@@ -68,10 +68,10 @@ const ForgotPassword = () => {
               }}
             />
             <Heading as="h3" size="6" align="center">
-              Sign In
+              Reset Password
             </Heading>
             <Text size="2" color="gray" align="center" mb="6">
-              Sign in to your account
+              Did you forget?
             </Text>
           </Flex>
           <form action="/">
@@ -90,32 +90,7 @@ const ForgotPassword = () => {
                   id="email"
                   type="email"
                   variant="classic"
-                  placeholder="Enter your email"
-                  size="3"
-                />
-              </Flex>
-            </Box>
-
-            <Box mb="5" position="relative">
-              <Box position="absolute" top="0" right="0">
-                <CustomLink href={""} text="Forgot password?" />
-              </Box>
-
-              <Flex direction="column">
-                <Text
-                  as="label"
-                  size="3"
-                  weight="medium"
-                  mb="2"
-                  htmlFor="password"
-                >
-                  Password
-                </Text>
-                <TextField.Root
-                  id="password"
-                  variant="classic"
-                  type="password"
-                  placeholder="Enter your password"
+                  placeholder="you@example.com"
                   size="3"
                 />
               </Flex>
@@ -126,60 +101,25 @@ const ForgotPassword = () => {
                 variant="solid"
                 type="submit"
                 size="3"
-                style={{ width: "100%", backgroundColor: "var(--primary)" }}
-              >
-                Sign in
-              </Button>
-            </Box>
-
-            {/* Divider */}
-            <Flex align="center" my="4" mb="5">
-              <Box flexGrow="1" height="1px" className="bg-textDefault" />
-              <Text size="2" mx="3" className="text-textDefault">
-                or
-              </Text>
-              <Box flexGrow="1" height="1px" className="bg-textDefault" />
-            </Flex>
-
-            <Box position="relative" mb="6">
-              <Button
-                variant="surface"
-                size="3"
+                color="red"
                 style={{ width: "100%" }}
-                className=""
               >
-                <Image
-                  src={Google}
-                  alt="Google Logo"
-                  width={24}
-                  height={24}
-                  style={{
-                    width: "24px",
-                    height: "24px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    backgroundColor: "white",
-                    padding: "2px", // optional: gives it breathing room
-                  }}
-                />
-                Continue with Google
+                Reset Password
               </Button>
             </Box>
 
             <Box position="relative">
               <Flex direction="column" gap="2">
                 <Text size="2" mt="4">
-                  Don&apos;t have an account?
+                  Already have an account?
                 </Text>
-                <Link href="/sign-up">
+                <Link href="/sign-in">
                   <Button
-                    variant="surface"
-                    highContrast
-                    color="gray"
+                    variant="solid"
                     size="3"
-                    style={{ width: "100%" }}
+                    style={{ width: "100%", backgroundColor: "var(--primary)" }}
                   >
-                    Create account
+                    Sign in
                   </Button>
                 </Link>
               </Flex>

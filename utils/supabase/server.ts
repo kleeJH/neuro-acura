@@ -1,11 +1,11 @@
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import type { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
 
-export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
+export async function createClient() {
+  const cookieStore = await cookies();
+
   return createServerClient(
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
@@ -26,4 +26,4 @@ export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
       },
     }
   );
-};
+}
