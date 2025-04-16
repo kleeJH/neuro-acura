@@ -8,8 +8,7 @@ import { StyleProviders } from "./[locale]/providers";
 import { Theme } from "@radix-ui/themes";
 
 // Supabase
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
+// import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = { ...baseMetadata };
 
@@ -18,8 +17,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
+  // const supabase = await createClient();
+  // const user = await supabase.auth.getUser();
+  // maybe get user and store it in state management
 
   return (
     <html suppressHydrationWarning lang={Config.defaultLocale}>
