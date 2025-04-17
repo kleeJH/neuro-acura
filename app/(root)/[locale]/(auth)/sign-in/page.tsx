@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { signInAction } from "@utils/supabase/actions";
 import SectionWrapper from "@components/basic/SectionWrapper";
 import {
@@ -10,6 +11,7 @@ import {
   Flex,
   Heading,
   TextField,
+  IconButton,
 } from "@radix-ui/themes";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,11 +21,28 @@ import Google from "@public/assets/icons/google.png";
 import { useSearchParams } from "next/navigation";
 import { AuthResponseStatusType } from "@common/enum";
 import CustomCallout from "@components/basic/ui/callout";
+import { Eye, EyeOff } from "lucide-react";
 
 const SignIn = () => {
   const searchParams = useSearchParams();
   const errorMessage = searchParams.get(AuthResponseStatusType.ERROR);
   const successMessage = searchParams.get(AuthResponseStatusType.SUCCESS);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const formData = new FormData(e.currentTarget);
+      await signInAction(formData);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <Box width="100%" mx="auto" maxWidth="600px">
@@ -49,7 +68,7 @@ const SignIn = () => {
               Sign in to your account
             </Text>
           </Flex>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Box mb="5">
               <Flex direction="column">
                 <Text
@@ -92,11 +111,28 @@ const SignIn = () => {
                   id="password"
                   name="password"
                   variant="classic"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
                   required
                   size="3"
-                />
+                >
+                  <TextField.Slot side="right">
+                    <IconButton
+                      size="1"
+                      variant="ghost"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShowPassword(!showPassword);
+                      }}
+                    >
+                      {showPassword ? (
+                        <Eye height="16" width="16" />
+                      ) : (
+                        <EyeOff height="16" width="16" />
+                      )}
+                    </IconButton>
+                  </TextField.Slot>
+                </TextField.Root>
               </Flex>
             </Box>
 
@@ -126,11 +162,11 @@ const SignIn = () => {
               <Button
                 variant="solid"
                 type="submit"
-                formAction={signInAction}
                 size="3"
                 style={{ width: "100%", backgroundColor: "var(--primary)" }}
+                disabled={!!successMessage || isSubmitting}
               >
-                Sign in
+                {isSubmitting ? "Signing in..." : "Sign in"}
               </Button>
             </Box>
 

@@ -11,7 +11,7 @@ import Config from "@config";
 export default function NotFound({
   type = "notfound",
 }: {
-  type?: "notfound" | "error";
+  type?: "notfound" | "error" | "notAuthenticated";
 }) {
   const router = useRouter();
 
@@ -30,11 +30,17 @@ export default function NotFound({
         <div className="stars absolute -left-full -z-30 mt-[56px] h-1/3 w-[600%] scale-[3]" />
         <div className="flex flex-col items-center justify-center">
           <h1 className="mb-4 font-mono text-4xl font-bold leading-tight opacity-60 md:text-9xl pink-text-gradient">
-            {type === "notfound" ? 404 : 500}
+            {type === "notfound"
+              ? 404
+              : type === "notAuthenticated"
+              ? 401
+              : 500}
           </h1>
           <p className="px-6 text-center font-mono text-base md:px-0 md:text-xl pink-text-gradient">
             {type === "notfound"
               ? "Page not found."
+              : type === "notAuthenticated"
+              ? "You are not authorized to access this page. Please sign in first."
               : "An unexpected error has occured."}
           </p>
         </div>
@@ -45,11 +51,15 @@ export default function NotFound({
           }}
           whileTap={{ scale: 0.8 }}
           onClick={() => {
-            router.replace("/");
+            if (type === "notAuthenticated") {
+              router.replace("/sign-in");
+            } else {
+              router.replace("/");
+            }
           }}
           className="square-button font-mono text-base font-semibold"
         >
-          Return to Home Page
+          {type === "notAuthenticated" ? "Sign in" : "Return to Home Page"}
         </motion.div>
       </div>
     </>

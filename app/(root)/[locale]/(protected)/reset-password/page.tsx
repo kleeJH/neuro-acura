@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signUpAction } from "@utils/supabase/actions";
+import { resetPasswordAction } from "@utils/supabase/actions";
 import SectionWrapper from "@components/basic/SectionWrapper";
 import {
   Card,
@@ -13,16 +13,14 @@ import {
   TextField,
   IconButton,
 } from "@radix-ui/themes";
-import Link from "next/link";
 import Image from "next/image";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
-import Google from "@public/assets/icons/google.png";
 import { useSearchParams } from "next/navigation";
 import { AuthResponseStatusType } from "@common/enum";
 import CustomCallout from "@components/basic/ui/callout";
 import { Eye, EyeOff } from "lucide-react";
 
-const SignUp = () => {
+const ResetPassword = () => {
   const searchParams = useSearchParams();
   const errorMessage = searchParams.get(AuthResponseStatusType.ERROR);
   const successMessage = searchParams.get(AuthResponseStatusType.SUCCESS);
@@ -57,7 +55,7 @@ const SignUp = () => {
     setIsSubmitting(true);
     try {
       const formData = new FormData(e.currentTarget);
-      await signUpAction(formData);
+      await resetPasswordAction(formData);
     } catch (error) {
       console.error(error);
     } finally {
@@ -83,36 +81,13 @@ const SignUp = () => {
               }}
             />
             <Heading as="h3" size="6" align="center">
-              Sign Up
+              Reset Password
             </Heading>
             <Text size="2" color="gray" align="center" mb="6">
-              Create an account
+              Please enter your new password below
             </Text>
           </Flex>
           <form onSubmit={handleSubmit}>
-            <Box mb="5">
-              <Flex direction="column">
-                <Text
-                  as="label"
-                  size="3"
-                  weight="medium"
-                  mb="2"
-                  htmlFor="email"
-                >
-                  Email address
-                </Text>
-                <TextField.Root
-                  id="email"
-                  name="email"
-                  type="email"
-                  variant="classic"
-                  placeholder="you@example.com"
-                  size="3"
-                  required
-                />
-              </Flex>
-            </Box>
-
             <Box mb="5" position="relative">
               <Flex direction="column" gap="2">
                 <Text
@@ -184,7 +159,7 @@ const SignUp = () => {
                   size="3"
                   weight="medium"
                   mb="2"
-                  htmlFor="password"
+                  htmlFor="confirm_password"
                 >
                   Confirm Password
                 </Text>
@@ -249,59 +224,8 @@ const SignUp = () => {
                 style={{ width: "100%" }}
                 disabled={!isFormValid || !!successMessage || isSubmitting}
               >
-                {isSubmitting ? "Creating account..." : "Create account"}
+                {isSubmitting ? "Resetting password..." : "Reset Password"}
               </Button>
-            </Box>
-
-            {/* Divider */}
-            <Flex align="center" my="4" mb="5">
-              <Box flexGrow="1" height="1px" className="bg-textDefault" />
-              <Text size="2" mx="3" className="text-textDefault">
-                or
-              </Text>
-              <Box flexGrow="1" height="1px" className="bg-textDefault" />
-            </Flex>
-
-            <Box position="relative" mb="6">
-              <Button
-                variant="surface"
-                size="3"
-                style={{ width: "100%" }}
-                className=""
-              >
-                <Image
-                  src={Google}
-                  alt="Google Logo"
-                  width={24}
-                  height={24}
-                  style={{
-                    width: "24px",
-                    height: "24px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    backgroundColor: "white",
-                    padding: "2px", // optional: gives it breathing room
-                  }}
-                />
-                Continue with Google
-              </Button>
-            </Box>
-
-            <Box position="relative">
-              <Flex direction="column" gap="2">
-                <Text size="2" mt="4">
-                  Already have an account?
-                </Text>
-                <Link href="/sign-in">
-                  <Button
-                    variant="solid"
-                    size="3"
-                    style={{ width: "100%", backgroundColor: "var(--primary)" }}
-                  >
-                    Sign in
-                  </Button>
-                </Link>
-              </Flex>
             </Box>
           </form>
         </Box>
@@ -310,4 +234,4 @@ const SignUp = () => {
   );
 };
 
-export default SectionWrapper(SignUp, "sign-up");
+export default SectionWrapper(ResetPassword, "reset-password");
