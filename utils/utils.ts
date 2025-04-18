@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { redirect } from "next/navigation";
+import { RadixColorOptions } from "@common/enum";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,4 +20,10 @@ export function encodedRedirect(
   message: string
 ) {
   return redirect(`${path}?${type}=${encodeURIComponent(message)}`);
+}
+
+export function randomizeRadixColor() {
+  const colors = Object.values(RadixColorOptions);
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
 }

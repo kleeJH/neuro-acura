@@ -33,7 +33,7 @@ const ForgotPassword = async () => {
       const formData = new FormData(e.currentTarget);
       await forgotPasswordAction(formData);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     } finally {
       setIsSubmitting(false);
     }

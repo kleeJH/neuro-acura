@@ -8,7 +8,7 @@ import {
 } from "@components/Overview";
 import Gallery from "@components/Overview/Gallery";
 
-const OverviewPage = () => {
+const PublicPage = () => {
   return (
     <>
       <Hero />
@@ -22,4 +22,4 @@ const OverviewPage = () => {
   );
 };
 
-export default OverviewPage;
+export default PublicPage;

@@ -7,8 +7,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-const DesktopNavigation = dynamic(() => import("./desktop-nav"));
-const MobileNavigation = dynamic(() => import("./mobile-nav"));
+const DesktopNavigation = dynamic(() => import("./desktop-nav"), {
+  ssr: false,
+});
+const MobileNavigation = dynamic(() => import("./mobile-nav"), { ssr: false });
 
 const Navigation = ({
   bgType = "default",

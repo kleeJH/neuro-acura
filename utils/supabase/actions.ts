@@ -47,7 +47,7 @@ export const signUpAction = async (formData: FormData) => {
   });
 
   if (error) {
-    console.error(error.code + " " + error.message);
+    // console.error(error.code + " " + error.message);
     return encodedRedirect(
       AuthResponseStatusType.ERROR,
       "/sign-up",
@@ -81,7 +81,7 @@ export const signInAction = async (formData: FormData) => {
     );
   }
 
-  return redirect("/user");
+  return redirect("/dashboard");
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
@@ -104,7 +104,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
   });
 
   if (error) {
-    console.error(error.message);
+    // console.error(error.message);
     return encodedRedirect(
       AuthResponseStatusType.ERROR,
       "/forgot-password",
@@ -167,5 +167,5 @@ export const resetPasswordAction = async (formData: FormData) => {
 export const signOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  return redirect("/sign-in");
+  return redirect("/");
 };

@@ -5,12 +5,15 @@ import MenuFloatLeftButton from "@components/basic/MenuFloatLeftButton";
 import ScrollToTopButton from "@components/basic/ScrollToTopButton";
 import Navigation from "@components/Navigation";
 import Footer from "@components/Footer";
+import AuthListenerProvider from "@providers/authListenerProvider";
 
-const OverviewLayout = ({ children }: { children: React.ReactNode }) => {
+const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className="relative w-full h-full bg-background z-10">
-        <Navigation />
+        <AuthListenerProvider>
+          <Navigation />
+        </AuthListenerProvider>
         <div className="relative min-h-[calc(80vh)]">{children}</div>
         <Footer />
       </div>
@@ -21,4 +24,4 @@ const OverviewLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default OverviewLayout;
+export default PublicLayout;

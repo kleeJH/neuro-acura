@@ -57,7 +57,7 @@ const ResetPassword = () => {
       const formData = new FormData(e.currentTarget);
       await resetPasswordAction(formData);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     } finally {
       setIsSubmitting(false);
     }

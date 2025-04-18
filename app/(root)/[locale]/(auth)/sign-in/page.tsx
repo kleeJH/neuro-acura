@@ -38,7 +38,7 @@ const SignIn = () => {
       const formData = new FormData(e.currentTarget);
       await signInAction(formData);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     } finally {
       setIsSubmitting(false);
     }
@@ -185,6 +185,7 @@ const SignIn = () => {
                 size="3"
                 style={{ width: "100%" }}
                 className=""
+                disabled
               >
                 <Image
                   src={Google}
