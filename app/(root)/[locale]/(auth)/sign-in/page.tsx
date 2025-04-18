@@ -1,33 +1,34 @@
 "use client";
 
-import { useState } from "react";
-import { signInAction } from "@utils/supabase/actions";
+import { CalloutQueryParameterType } from "@common/enum";
 import SectionWrapper from "@components/basic/SectionWrapper";
+import CustomCallout from "@components/basic/ui/callout";
+import CustomLink from "@components/basic/ui/link";
+import Google from "@public/assets/icons/google.png";
+import LowDefLogo from "@public/assets/images/logos/icon1.png";
 import {
-  Card,
-  Text,
   Box,
   Button,
+  Card,
   Flex,
   Heading,
-  TextField,
   IconButton,
   Spinner,
+  Text,
+  TextField,
 } from "@radix-ui/themes";
-import Link from "next/link";
-import Image from "next/image";
-import CustomLink from "@components/basic/ui/link";
-import LowDefLogo from "@public/assets/images/logos/icon1.png";
-import Google from "@public/assets/icons/google.png";
-import { useSearchParams } from "next/navigation";
-import { AuthResponseStatusType } from "@common/enum";
-import CustomCallout from "@components/basic/ui/callout";
+import { signInAction } from "@utils/supabase/actions";
 import { Eye, EyeOff } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 const SignIn = () => {
   const searchParams = useSearchParams();
-  const errorMessage = searchParams.get(AuthResponseStatusType.ERROR);
-  const successMessage = searchParams.get(AuthResponseStatusType.SUCCESS);
+  const infoMessage = searchParams.get(CalloutQueryParameterType.INFO);
+  const errorMessage = searchParams.get(CalloutQueryParameterType.ERROR);
+  const successMessage = searchParams.get(CalloutQueryParameterType.SUCCESS);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -69,6 +70,18 @@ const SignIn = () => {
               Sign in to your account
             </Text>
           </Flex>
+
+          {infoMessage && (
+            <Box mb="5" position="relative">
+              <CustomCallout
+                type="info"
+                text={infoMessage}
+                variant="surface"
+                size="1"
+              />
+            </Box>
+          )}
+
           <form onSubmit={handleSubmit}>
             <Box mb="5">
               <Flex direction="column">
@@ -82,6 +95,7 @@ const SignIn = () => {
                   Email address
                 </Text>
                 <TextField.Root
+                  tabIndex={1}
                   id="email"
                   name="email"
                   type="email"
@@ -109,6 +123,7 @@ const SignIn = () => {
                   Password
                 </Text>
                 <TextField.Root
+                  tabIndex={2}
                   id="password"
                   name="password"
                   variant="classic"
@@ -161,10 +176,15 @@ const SignIn = () => {
 
             <Box mb="5" position="relative">
               <Button
+                tabIndex={3}
                 variant="solid"
                 type="submit"
                 size="3"
-                style={{ width: "100%", backgroundColor: "var(--primary)" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "var(--primary)",
+                  color: "var(--text-default)",
+                }}
                 disabled={!!successMessage || isSubmitting}
               >
                 {isSubmitting ? (
@@ -188,6 +208,7 @@ const SignIn = () => {
 
             <Box position="relative" mb="6">
               <Button
+                tabIndex={4}
                 variant="surface"
                 size="3"
                 style={{ width: "100%" }}
@@ -219,6 +240,7 @@ const SignIn = () => {
                 </Text>
                 <Link href="/sign-up">
                   <Button
+                    tabIndex={5}
                     variant="surface"
                     highContrast
                     color="gray"

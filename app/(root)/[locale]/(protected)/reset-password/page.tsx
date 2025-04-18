@@ -17,14 +17,14 @@ import {
 import Image from "next/image";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
 import { useSearchParams } from "next/navigation";
-import { AuthResponseStatusType } from "@common/enum";
+import { CalloutQueryParameterType, RadixColorOptions } from "@common/enum";
 import CustomCallout from "@components/basic/ui/callout";
 import { Eye, EyeOff } from "lucide-react";
 
 const ResetPassword = () => {
   const searchParams = useSearchParams();
-  const errorMessage = searchParams.get(AuthResponseStatusType.ERROR);
-  const successMessage = searchParams.get(AuthResponseStatusType.SUCCESS);
+  const errorMessage = searchParams.get(CalloutQueryParameterType.ERROR);
+  const successMessage = searchParams.get(CalloutQueryParameterType.SUCCESS);
 
   const [password, setPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
@@ -124,6 +124,7 @@ const ResetPassword = () => {
                   })}
                 </ul>
                 <TextField.Root
+                  tabIndex={1}
                   id="password"
                   name="password"
                   variant="classic"
@@ -165,6 +166,7 @@ const ResetPassword = () => {
                   Confirm Password
                 </Text>
                 <TextField.Root
+                  tabIndex={2}
                   id="confirm_password"
                   name="confirm_password"
                   variant="classic"
@@ -217,10 +219,11 @@ const ResetPassword = () => {
 
             <Box mb="5" position="relative">
               <Button
+                tabIndex={3}
                 variant="surface"
                 type="submit"
                 highContrast
-                color="gray"
+                color={RadixColorOptions.GREEN}
                 size="3"
                 style={{ width: "100%" }}
                 disabled={!isFormValid || !!successMessage || isSubmitting}

@@ -17,13 +17,13 @@ import Link from "next/link";
 import Image from "next/image";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
 import { useSearchParams } from "next/navigation";
-import { AuthResponseStatusType } from "@common/enum";
+import { CalloutQueryParameterType } from "@common/enum";
 import CustomCallout from "@components/basic/ui/callout";
 
 const ForgotPassword = async () => {
   const searchParams = useSearchParams();
-  const errorMessage = searchParams.get(AuthResponseStatusType.ERROR);
-  const successMessage = searchParams.get(AuthResponseStatusType.SUCCESS);
+  const errorMessage = searchParams.get(CalloutQueryParameterType.ERROR);
+  const successMessage = searchParams.get(CalloutQueryParameterType.SUCCESS);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -77,6 +77,7 @@ const ForgotPassword = async () => {
                   Email address
                 </Text>
                 <TextField.Root
+                  tabIndex={1}
                   id="email"
                   name="email"
                   type="email"
@@ -111,6 +112,7 @@ const ForgotPassword = async () => {
 
             <Box mb="5" position="relative">
               <Button
+                tabIndex={2}
                 variant="solid"
                 type="submit"
                 size="3"
@@ -135,6 +137,7 @@ const ForgotPassword = async () => {
                 </Text>
                 <Link href="/sign-in">
                   <Button
+                    tabIndex={3}
                     variant="solid"
                     size="3"
                     style={{ width: "100%", backgroundColor: "var(--primary)" }}

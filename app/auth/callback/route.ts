@@ -20,5 +20,7 @@ export async function GET(request: Request) {
   }
 
   // URL to redirect to after sign up process completes
-  return NextResponse.redirect(`${origin}/`);
+  return NextResponse.redirect(
+    `${origin}/sign-in?info=Sign up successful. Please sign in.`
+  );
 }

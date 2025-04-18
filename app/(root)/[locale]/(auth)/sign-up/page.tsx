@@ -19,14 +19,14 @@ import Image from "next/image";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
 import Google from "@public/assets/icons/google.png";
 import { useSearchParams } from "next/navigation";
-import { AuthResponseStatusType } from "@common/enum";
+import { CalloutQueryParameterType } from "@common/enum";
 import CustomCallout from "@components/basic/ui/callout";
 import { Eye, EyeOff } from "lucide-react";
 
 const SignUp = () => {
   const searchParams = useSearchParams();
-  const errorMessage = searchParams.get(AuthResponseStatusType.ERROR);
-  const successMessage = searchParams.get(AuthResponseStatusType.SUCCESS);
+  const errorMessage = searchParams.get(CalloutQueryParameterType.ERROR);
+  const successMessage = searchParams.get(CalloutQueryParameterType.SUCCESS);
 
   const [password, setPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
@@ -103,6 +103,7 @@ const SignUp = () => {
                   Email address
                 </Text>
                 <TextField.Root
+                  tabIndex={1}
                   id="email"
                   name="email"
                   type="email"
@@ -149,6 +150,7 @@ const SignUp = () => {
                   })}
                 </ul>
                 <TextField.Root
+                  tabIndex={2}
                   id="password"
                   name="password"
                   variant="classic"
@@ -190,6 +192,7 @@ const SignUp = () => {
                   Confirm Password
                 </Text>
                 <TextField.Root
+                  tabIndex={3}
                   id="confirm_password"
                   name="confirm_password"
                   variant="classic"
@@ -242,6 +245,7 @@ const SignUp = () => {
 
             <Box mb="5" position="relative">
               <Button
+                tabIndex={4}
                 variant="surface"
                 type="submit"
                 highContrast
@@ -271,6 +275,7 @@ const SignUp = () => {
 
             <Box position="relative" mb="6">
               <Button
+                tabIndex={5}
                 variant="surface"
                 size="3"
                 style={{ width: "100%" }}
@@ -302,9 +307,14 @@ const SignUp = () => {
                 </Text>
                 <Link href="/sign-in">
                   <Button
+                    tabIndex={6}
                     variant="solid"
                     size="3"
-                    style={{ width: "100%", backgroundColor: "var(--primary)" }}
+                    style={{
+                      width: "100%",
+                      backgroundColor: "var(--primary)",
+                      color: "var(--text-default)",
+                    }}
                   >
                     Sign in
                   </Button>

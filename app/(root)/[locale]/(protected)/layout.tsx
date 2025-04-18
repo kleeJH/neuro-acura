@@ -3,7 +3,6 @@ import React from "react";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Footer from "@components/Footer";
-import ScrollProgress from "@components/basic/ScrollProgress";
 import MenuFloatLeftButton from "@components/basic/MenuFloatLeftButton";
 import ScrollToTopButton from "@components/basic/ScrollToTopButton";
 import Navigation from "@components/Navigation";
@@ -36,7 +35,6 @@ const ProtectedLayout = async ({ children }: { children: React.ReactNode }) => {
           <Footer />
         </div>
       </AuthListenerProvider>
-      {/* <ScrollProgress /> */}
       <ScrollToTopButton />
       <MenuFloatLeftButton />
     </>

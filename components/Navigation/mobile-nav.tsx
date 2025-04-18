@@ -1,13 +1,16 @@
 import Config from "@config";
 
-import { Dispatch, SetStateAction, useState } from "react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { Drawer } from "antd";
+import { motion } from "framer-motion";
 import { AlignJustify } from "lucide-react";
-
-import LocaleSwitch from "./locale-button";
+import { usePathname, useRouter } from "next/navigation";
+import { Dispatch, SetStateAction, useState } from "react";
+import AvatarMenu from "@components/basic/ui/avatarMenu";
+// import LocaleSwitch from "./locale-button";
+import { useUserStore } from "@stores/useUserStore";
 import ThemeSwitch from "./theme-button";
+import Link from "next/link";
+import { Button } from "@radix-ui/themes";
 
 const MobileNavigation = ({
   hasNavLinks = true,
@@ -19,6 +22,12 @@ const MobileNavigation = ({
   setActive: Dispatch<SetStateAction<string>>;
 }) => {
   const router = useRouter();
+  const pathname = usePathname();
+
+  const user = useUserStore((state) => state.user);
+
+  const isAuthPage =
+    pathname.includes("sign-in") || pathname.includes("sign-up");
 
   const [toggleMobileDrawer, setToggleMobileDrawer] = useState<boolean>(false);
 
@@ -49,8 +58,38 @@ const MobileNavigation = ({
         open={toggleMobileDrawer}
         width={250}
         extra={
-          <div className="flex justify-end items-center gap-3 md:gap-5">
-            {/* <LocaleSwitch /> */}
+          <div className="flex justify-between items-center gap-3 md:gap-5">
+            {user ? (
+              <AvatarMenu />
+            ) : (
+              <div>
+                {!isAuthPage && (
+                  <>
+                    <Link href="/sign-in">
+                      <Button
+                        variant="solid"
+                        style={{
+                          backgroundColor: "var(--foreground)",
+                          borderColor: "var(--accent)",
+                          border: "1px solid var(--accent)",
+                          color: "var(--text-default)",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor =
+                            "var(--accent)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor =
+                            "var(--foreground)";
+                        }}
+                      >
+                        Sign in
+                      </Button>
+                    </Link>
+                  </>
+                )}
+              </div>
+            )}
             <ThemeSwitch />
           </div>
         }

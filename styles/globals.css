@@ -22,12 +22,12 @@ li {
     --text-sectionSubText: #ffcfa6;
     --antd-button-hover: #d9d9d9;
 
-    --background: #fcfcfd;
+    --background: #f5f6fa;
     --foreground: #ffcfa6;
 
     --primary: #e26a2c;
     --secondary: #ffcfb3;
-    --tertiary: #fcfcfd;
+    --tertiary: #f5f6fa;
     --accent: #ff8f4c;
     --drop-shadow-color: rgba(9, 8, 13, 0.25);
 
