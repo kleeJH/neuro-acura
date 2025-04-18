@@ -11,6 +11,7 @@ import {
   Flex,
   Heading,
   TextField,
+  Spinner,
 } from "@radix-ui/themes";
 import Link from "next/link";
 import Image from "next/image";
@@ -117,7 +118,13 @@ const ForgotPassword = async () => {
                 style={{ width: "100%" }}
                 disabled={!!successMessage || isSubmitting}
               >
-                {isSubmitting ? "Preparing reset email..." : "Reset Password"}
+                {isSubmitting ? (
+                  <>
+                    <Spinner size="2" /> Preparing reset email...
+                  </>
+                ) : (
+                  "Reset Password"
+                )}
               </Button>
             </Box>
 

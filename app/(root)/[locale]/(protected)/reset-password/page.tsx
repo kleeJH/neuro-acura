@@ -12,6 +12,7 @@ import {
   Heading,
   TextField,
   IconButton,
+  Spinner,
 } from "@radix-ui/themes";
 import Image from "next/image";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
@@ -224,7 +225,13 @@ const ResetPassword = () => {
                 style={{ width: "100%" }}
                 disabled={!isFormValid || !!successMessage || isSubmitting}
               >
-                {isSubmitting ? "Resetting password..." : "Reset Password"}
+                {isSubmitting ? (
+                  <>
+                    <Spinner size="2" /> Resetting password...
+                  </>
+                ) : (
+                  "Reset Password"
+                )}
               </Button>
             </Box>
           </form>

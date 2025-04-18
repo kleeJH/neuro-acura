@@ -12,6 +12,7 @@ import {
   Heading,
   TextField,
   IconButton,
+  Spinner,
 } from "@radix-ui/themes";
 import Link from "next/link";
 import Image from "next/image";
@@ -249,7 +250,13 @@ const SignUp = () => {
                 style={{ width: "100%" }}
                 disabled={!isFormValid || !!successMessage || isSubmitting}
               >
-                {isSubmitting ? "Creating account..." : "Create account"}
+                {isSubmitting ? (
+                  <>
+                    <Spinner size="2" /> Creating account...
+                  </>
+                ) : (
+                  "Create account"
+                )}
               </Button>
             </Box>
 

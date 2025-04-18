@@ -12,6 +12,7 @@ import {
   Heading,
   TextField,
   IconButton,
+  Spinner,
 } from "@radix-ui/themes";
 import Link from "next/link";
 import Image from "next/image";
@@ -166,7 +167,13 @@ const SignIn = () => {
                 style={{ width: "100%", backgroundColor: "var(--primary)" }}
                 disabled={!!successMessage || isSubmitting}
               >
-                {isSubmitting ? "Signing in..." : "Sign in"}
+                {isSubmitting ? (
+                  <>
+                    <Spinner size="2" /> Signing in...
+                  </>
+                ) : (
+                  "Sign in"
+                )}
               </Button>
             </Box>
 
