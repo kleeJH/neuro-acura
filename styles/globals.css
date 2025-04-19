@@ -113,7 +113,7 @@ li {
 }
 /* General */
 .container {
-  @apply max-w-[1400px] mx-auto sm:px-16 px-6 w-full;
+  @apply max-w-[1400px] mx-auto sm:px-10 px-6 w-full;
 }
 
 /* Not Found */

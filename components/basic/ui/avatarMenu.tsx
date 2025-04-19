@@ -6,7 +6,10 @@ import { useUserStore } from "@stores/useUserStore";
 import { signOutAction } from "@utils/supabase/actions";
 import { LogOut } from "lucide-react";
 
-const AvatarMenu = () => {
+interface AvatarMenuProps {
+  size: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+}
+const AvatarMenu = ({ size = "2" }: AvatarMenuProps) => {
   const setUser = useUserStore((state) => state.setUser);
 
   const handleLogout = async () => {
@@ -21,10 +24,10 @@ const AvatarMenu = () => {
       <DropdownMenu.Trigger>
         <Button variant="ghost" style={{ padding: 0 }} radius="full">
           <Avatar
-            size="2"
+            size={size}
             variant="solid"
             radius="full"
-            color={RadixColorOptions.GRAY}
+            color={RadixColorOptions.ORANGE}
             fallback={
               <Box width="20px" height="20px">
                 <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">

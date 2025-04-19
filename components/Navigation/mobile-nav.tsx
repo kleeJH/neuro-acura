@@ -41,7 +41,37 @@ const MobileNavigation = ({
 
   return (
     <>
-      <div className="nav:hidden flex flex-1 justify-end items-center">
+      <div className="nav:hidden flex flex-1 justify-end items-center gap-8">
+        {user ? (
+          <AvatarMenu size="3" />
+        ) : (
+          <div>
+            {!isAuthPage && (
+              <>
+                <Link href="/sign-in">
+                  <Button
+                    variant="solid"
+                    style={{
+                      backgroundColor: "var(--foreground)",
+                      borderColor: "var(--accent)",
+                      border: "1px solid var(--accent)",
+                      color: "var(--text-default)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "var(--accent)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor =
+                        "var(--foreground)";
+                    }}
+                  >
+                    Sign in
+                  </Button>
+                </Link>
+              </>
+            )}
+          </div>
+        )}
         <motion.div
           className="square-button"
           whileTap={{ scale: 0.8 }}
@@ -59,37 +89,6 @@ const MobileNavigation = ({
         width={250}
         extra={
           <div className="flex justify-between items-center gap-3 md:gap-5">
-            {user ? (
-              <AvatarMenu />
-            ) : (
-              <div>
-                {!isAuthPage && (
-                  <>
-                    <Link href="/sign-in">
-                      <Button
-                        variant="solid"
-                        style={{
-                          backgroundColor: "var(--foreground)",
-                          borderColor: "var(--accent)",
-                          border: "1px solid var(--accent)",
-                          color: "var(--text-default)",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor =
-                            "var(--accent)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor =
-                            "var(--foreground)";
-                        }}
-                      >
-                        Sign in
-                      </Button>
-                    </Link>
-                  </>
-                )}
-              </div>
-            )}
             <ThemeSwitch />
           </div>
         }

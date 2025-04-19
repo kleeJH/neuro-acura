@@ -27,7 +27,7 @@ const DesktopNavigation = ({
     >
       <>
         {user ? (
-          <AvatarMenu />
+          <AvatarMenu size="3" />
         ) : (
           <div className="flex gap-3 md:gap-5">
             {!isAuthPage && (
