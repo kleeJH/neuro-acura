@@ -48,7 +48,12 @@ const SignIn = () => {
 
   return (
     <Box width="100%" mx="auto" maxWidth="600px">
-      <Card asChild variant="classic" size="4">
+      <Card
+        asChild
+        variant="classic"
+        size="4"
+        style={{ boxShadow: "var(--shadow-3)" }}
+      >
         <Box px="7">
           <Flex direction="column" align="center" gap="4">
             <Image

@@ -2,7 +2,6 @@ import React from "react";
 
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import Footer from "@components/Footer";
 import MenuFloatLeftButton from "@components/basic/MenuFloatLeftButton";
 import ScrollToTopButton from "@components/basic/ScrollToTopButton";
 import Navigation from "@components/Navigation";
@@ -27,17 +26,14 @@ const ProtectedLayout = async ({ children }: { children: React.ReactNode }) => {
     return redirect("/not-authenticated");
   }
   return (
-    <>
+    <div className="bg-background min-h-screen">
       <AuthListenerProvider>
-        <div className="relative w-full h-full bg-background z-10">
-          <Navigation />
-          <div className="relative min-h-[calc(80vh)]">{children}</div>
-          <Footer />
-        </div>
+        <Navigation />
+        <div className="relative min-h-[calc(100vh - 12rem)]">{children}</div>
       </AuthListenerProvider>
       <ScrollToTopButton />
       <MenuFloatLeftButton />
-    </>
+    </div>
   );
 };
 

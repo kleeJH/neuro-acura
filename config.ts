@@ -31,7 +31,7 @@ const Config: {
     picture2: StaticImport;
     picture3: StaticImport;
   };
-  navigationLinks: { title: string; href: string }[];
+  navigationLinks: { title: string; href: string; requireLogin: boolean }[];
   footer: {
     [categoryTranslationPath: string]: {
       [subCategoryTranslationPath: string]: { href: string };
@@ -63,14 +63,17 @@ const Config: {
   // Socials
   socials: {
     phone: {
-      number: "60362761557",
+      number: "60102357477",
     },
     facebook: {
-      href: "https://www.facebook.com/TJDEDU",
-      msgLink: "https://www.facebook.com/messages/t/101261530228970",
+      href: "https://www.facebook.com/profile.php?id=61554822640142",
+      msgLink: "https://www.facebook.com/messages/t/220727884446848",
     },
     whatsapp: {
-      href: "https://wa.me/60162614308",
+      href: "https://wa.me/60102357477",
+    },
+    instagram: {
+      href: "https://www.instagram.com/tcmweikang",
     },
   },
 
@@ -111,26 +114,16 @@ const Config: {
     picture3: LowDefLogo,
   },
   navigationLinks: [
-    // {
-    //   title: "About",
-    //   href: "/#about",
-    // },
-    // {
-    //   title: "Programme",
-    //   href: "/#programme",
-    // },
-    // {
-    //   title: "Admission",
-    //   href: "/#admission",
-    // },
-    // {
-    //   title: "Location",
-    //   href: "/#location",
-    // },
-    // {
-    //   title: "Contact",
-    //   href: "/#contact",
-    // },
+    {
+      title: "Home",
+      href: "/",
+      requireLogin: false,
+    },
+    {
+      title: "Dashboard",
+      href: "/dashboard",
+      requireLogin: true,
+    },
   ],
   footer: {
     "Footer.Top.Category.quickLinks": {

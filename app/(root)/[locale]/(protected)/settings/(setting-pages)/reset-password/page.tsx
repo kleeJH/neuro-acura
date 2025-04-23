@@ -66,7 +66,12 @@ const ResetPassword = () => {
 
   return (
     <Box width="100%" mx="auto" maxWidth="600px">
-      <Card asChild variant="classic" size="4">
+      <Card
+        asChild
+        variant="classic"
+        size="4"
+        style={{ boxShadow: "var(--shadow-3)" }}
+      >
         <Box px="7">
           <Flex direction="column" align="center" gap="4">
             <Image
@@ -225,7 +230,7 @@ const ResetPassword = () => {
                 highContrast
                 color={RadixColorOptions.GREEN}
                 size="3"
-                style={{ width: "100%" }}
+                style={{ width: "100%", color: "var(--text-default)" }}
                 disabled={!isFormValid || !!successMessage || isSubmitting}
               >
                 {isSubmitting ? (

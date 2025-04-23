@@ -1,7 +1,7 @@
 import SectionWrapper from "@components/basic/SectionWrapper";
 
-const DashboardPage = () => {
+const Dashboard = () => {
   return <>Dashboard here to be added later</>;
 };
 
-export default SectionWrapper(DashboardPage, "dashboard");
+export default SectionWrapper(Dashboard, "dashboard");

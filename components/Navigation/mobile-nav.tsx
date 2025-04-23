@@ -6,11 +6,10 @@ import { AlignJustify } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
 import AvatarMenu from "@components/basic/ui/avatarMenu";
-// import LocaleSwitch from "./locale-button";
-import { useUserStore } from "@stores/useUserStore";
 import ThemeSwitch from "./theme-button";
 import Link from "next/link";
 import { Button } from "@radix-ui/themes";
+import { useUserStore } from "@stores/useUserStore";
 
 const MobileNavigation = ({
   hasNavLinks = true,
@@ -94,23 +93,25 @@ const MobileNavigation = ({
         }
       >
         <ul className="list-none flex flex-col gap-10 select-none">
-          {Config.navigationLinks.map((nav) => (
-            <li
-              key={nav.href}
-              className={`${
-                active === nav.title
-                  ? "text-accent drop-shadow-md"
-                  : "text-textDefault"
-              } hover:text-accent font-inter font-medium cursor-pointer text-[16px]`}
-              onClick={() => {
-                setActive(nav.title);
-                router.replace(nav.href);
-                onClose();
-              }}
-            >
-              {nav.title}
-            </li>
-          ))}
+          {Config.navigationLinks
+            .filter((nav) => user || !nav.requireLogin)
+            .map((nav) => (
+              <li
+                key={nav.href}
+                className={`${
+                  active === nav.title
+                    ? "text-accent drop-shadow-md"
+                    : "text-textDefault"
+                } hover:text-accent font-inter font-medium cursor-pointer text-[16px]`}
+                onClick={() => {
+                  setActive(nav.title);
+                  router.replace(nav.href);
+                  onClose();
+                }}
+              >
+                {nav.title}
+              </li>
+            ))}
         </ul>
       </Drawer>
     </>

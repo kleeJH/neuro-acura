@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { encodedRedirect } from "@/utils/utils";
 import {
+  AUTH_ROUTES,
   CalloutQueryParameterType,
   SupabaseAuthErrorCodes,
 } from "@common/enum";
@@ -75,7 +76,7 @@ export const signUpAction = async (formData: FormData) => {
   if (!email) {
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/sign-up",
+      AUTH_ROUTES.SIGN_UP,
       "Email is required"
     );
   }
@@ -83,7 +84,7 @@ export const signUpAction = async (formData: FormData) => {
   if (!password || !confirmPassword) {
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/sign-up",
+      AUTH_ROUTES.SIGN_UP,
       "Password and password confirmation are required"
     );
   }
@@ -91,7 +92,7 @@ export const signUpAction = async (formData: FormData) => {
   if (password !== confirmPassword) {
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/sign-up",
+      AUTH_ROUTES.SIGN_UP,
       "Please make sure your passwords match"
     );
   }
@@ -100,7 +101,7 @@ export const signUpAction = async (formData: FormData) => {
     email,
     password,
     options: {
-      emailRedirectTo: `${origin}/auth/callback`,
+      emailRedirectTo: `${origin}${AUTH_ROUTES.AUTH_CALLBACK}`,
     },
   });
 
@@ -108,13 +109,13 @@ export const signUpAction = async (formData: FormData) => {
     const errorMessage: string = getAuthErrorMessage(error.code!);
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/sign-up",
+      AUTH_ROUTES.SIGN_UP,
       errorMessage
     );
   } else {
     return encodedRedirect(
       CalloutQueryParameterType.SUCCESS,
-      "/sign-up",
+      AUTH_ROUTES.SIGN_UP,
       "Thanks for signing up! Please check your email for a verification link."
     );
   }
@@ -135,7 +136,7 @@ export const signInAction = async (formData: FormData) => {
     const errorMessage: string = getAuthErrorMessage(error.code!);
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/sign-in",
+      AUTH_ROUTES.SIGN_IN,
       errorMessage
     );
   }
@@ -153,20 +154,20 @@ export const forgotPasswordAction = async (formData: FormData) => {
   if (!email) {
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/forgot-password",
+      AUTH_ROUTES.FORGOT_PASSWORD,
       "Email is required"
     );
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/callback?redirect_to=/reset-password`,
+    redirectTo: `${origin}${AUTH_ROUTES.AUTH_CALLBACK}?redirect_to=${AUTH_ROUTES.RESET_PASSWORD}`,
   });
 
   if (error) {
     const errorMessage: string = getAuthErrorMessage(error.code!);
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/forgot-password",
+      AUTH_ROUTES.FORGOT_PASSWORD,
       errorMessage
     );
   }
@@ -177,7 +178,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
 
   return encodedRedirect(
     CalloutQueryParameterType.SUCCESS,
-    "/forgot-password",
+    AUTH_ROUTES.FORGOT_PASSWORD,
     "Check your email for a link to reset your password."
   );
 };
@@ -191,7 +192,7 @@ export const resetPasswordAction = async (formData: FormData) => {
   if (!password || !confirmPassword) {
     encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/reset-password",
+      AUTH_ROUTES.RESET_PASSWORD,
       "Password and confirm password are required"
     );
   }
@@ -199,7 +200,7 @@ export const resetPasswordAction = async (formData: FormData) => {
   if (password !== confirmPassword) {
     encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/reset-password",
+      AUTH_ROUTES.RESET_PASSWORD,
       "Please make sure your passwords match"
     );
   }
@@ -212,14 +213,14 @@ export const resetPasswordAction = async (formData: FormData) => {
     const errorMessage: string = getAuthErrorMessage(error.code!);
     return encodedRedirect(
       CalloutQueryParameterType.ERROR,
-      "/reset-password",
+      AUTH_ROUTES.RESET_PASSWORD,
       errorMessage
     );
   }
 
   return encodedRedirect(
     CalloutQueryParameterType.SUCCESS,
-    "/reset-password",
+    AUTH_ROUTES.RESET_PASSWORD,
     "Password updated"
   );
 };

@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { useUserStore } from "@stores/useUserStore";
 
 const DesktopNavigation = dynamic(() => import("./desktop-nav"), {
   ssr: false,
@@ -22,6 +23,8 @@ const Navigation = ({
   const router = useRouter();
   const pathname = usePathname();
   const [active, setActive] = useState<string>(pathname);
+
+  const user = useUserStore((state) => state.user);
 
   return (
     <>
@@ -52,10 +55,9 @@ const Navigation = ({
             </p>
           </div>
 
-          {hasNavLinks && (
+          {hasNavLinks && user && (
             <ul className="list-none flex flex-row gap-10 max-nav:hidden">
               {Config.navigationLinks.map((nav) => (
-                // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
                 <li
                   key={nav.href}
                   className={`${

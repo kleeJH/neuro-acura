@@ -284,3 +284,11 @@ export enum RadixColorOptions {
   MINT = "mint",
   SKY = "sky",
 }
+
+export enum AUTH_ROUTES {
+  SIGN_IN = "/sign-in",
+  SIGN_UP = "/sign-up",
+  FORGOT_PASSWORD = "/forgot-password",
+  RESET_PASSWORD = "/settings/reset-password",
+  AUTH_CALLBACK = "/auth/callback",
+}

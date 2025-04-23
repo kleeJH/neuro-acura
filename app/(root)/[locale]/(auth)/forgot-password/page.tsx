@@ -42,7 +42,12 @@ const ForgotPassword = async () => {
 
   return (
     <Box width="100%" mx="auto" maxWidth="600px">
-      <Card asChild variant="classic" size="4">
+      <Card
+        asChild
+        variant="classic"
+        size="4"
+        style={{ boxShadow: "var(--shadow-3)" }}
+      >
         <Box px="7">
           <Flex direction="column" align="center" gap="4">
             <Image
@@ -117,7 +122,7 @@ const ForgotPassword = async () => {
                 type="submit"
                 size="3"
                 color="red"
-                style={{ width: "100%" }}
+                style={{ width: "100%", color: "var(--text-default)" }}
                 disabled={!!successMessage || isSubmitting}
               >
                 {isSubmitting ? (
@@ -140,7 +145,11 @@ const ForgotPassword = async () => {
                     tabIndex={3}
                     variant="solid"
                     size="3"
-                    style={{ width: "100%", backgroundColor: "var(--primary)" }}
+                    style={{
+                      width: "100%",
+                      backgroundColor: "var(--primary)",
+                      color: "var(--text-default)",
+                    }}
                   >
                     Sign in
                   </Button>

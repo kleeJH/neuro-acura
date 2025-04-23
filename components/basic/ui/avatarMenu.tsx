@@ -4,12 +4,14 @@ import { RadixColorOptions } from "@common/enum";
 import { Avatar, Box, Button, DropdownMenu } from "@radix-ui/themes";
 import { useUserStore } from "@stores/useUserStore";
 import { signOutAction } from "@utils/supabase/actions";
-import { LogOut } from "lucide-react";
+import { Settings, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface AvatarMenuProps {
   size: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 }
 const AvatarMenu = ({ size = "2" }: AvatarMenuProps) => {
+  const router = useRouter();
   const setUser = useUserStore((state) => state.setUser);
 
   const handleLogout = async () => {
@@ -42,10 +44,11 @@ const AvatarMenu = ({ size = "2" }: AvatarMenuProps) => {
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
-        {/* <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
-                Log Out
-              </DropdownMenu.Item>
-              <DropdownMenu.Separator /> */}
+        <DropdownMenu.Item onSelect={() => router.push("/settings")}>
+          <Settings height={16} width={16} />
+          {"Settings"}
+        </DropdownMenu.Item>
+        <DropdownMenu.Separator />
         <DropdownMenu.Item
           color="red"
           onSelect={async () => await handleLogout()}

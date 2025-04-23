@@ -107,7 +107,7 @@ const Footer = ({ hidden = false }: { hidden?: boolean }) => {
                   >
                     <Image
                       src={"/assets/icons/facebook.svg"}
-                      alt="Facebook Logo"
+                      alt="Instagram Logo"
                       aria-hidden="true"
                       className="h-5 w-5 fill-white"
                       width={30}
