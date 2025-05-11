@@ -3,6 +3,7 @@ import {
   Admission,
   Contact,
   Hero,
+  InfoBento,
   Location,
   Programme,
 } from "@components/Overview";
@@ -13,10 +14,11 @@ const PublicPage = () => {
     <>
       <Hero />
       <About />
+      <InfoBento />
       {/* <Programme /> */}
       {/* <Admission /> */}
       {/* <Location /> */}
-      {/* <Contact /> */}
+      <Contact />
       {/* <Gallery /> */}
     </>
   );

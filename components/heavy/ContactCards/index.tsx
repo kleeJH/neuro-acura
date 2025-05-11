@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { motion } from "framer-motion";
 import { notification } from "antd";
@@ -74,7 +74,7 @@ const ContactCards = () => {
         >
           <ContactCard
             title="Phone"
-            description="Call us via +60362761557"
+            description={`Call us via +${Config.socials["phone"].number}`}
             icon="/assets/icons/phone.svg"
           />
         </motion.div>
@@ -86,7 +86,7 @@ const ContactCards = () => {
         >
           <ContactCard
             title="WhatsApp"
-            description="Book an appointment via +60162614308"
+            description={`Book an appointment via +${Config.socials["whatsapp"].number}`}
             icon="/assets/icons/whatsapp.svg"
           />
         </motion.a>

@@ -24,7 +24,7 @@ const About = () => {
         cognitive enhancement.
       </p>
 
-      <h2 className={styles.withinSectionHeadText}>Service Propositions</h2>
+      <h2 className={styles.withinSectionHeadText}>The Solution</h2>
       <p className={`${styles.withinSectionSubText} mt-3`}>
         NeuroAcura offers a groundbreaking solution by integrating neurofeedback
         therapy and psychological counseling. Neurofeedback uses real-time

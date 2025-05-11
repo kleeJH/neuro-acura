@@ -5,9 +5,9 @@ import type {
   StaticImport,
 } from "next/dist/shared/lib/get-img-props";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
-import TiltCardPic1 from "@public/assets/images/cards/card-sportsDay.jpg";
-import TiltCardPic2 from "@public/assets/images/cards/card-malaysiaDay.jpg";
-import TiltCardPic3 from "@public/assets/images/cards/card-plants.jpg";
+import TiltCardPic1 from "@public/assets/images/cards/card1.png";
+import TiltCardPic2 from "@public/assets/images/cards/card2.jpg";
+import TiltCardPic3 from "@public/assets/images/cards/card4.jpg";
 
 const Config: {
   logoLowDef: StaticImageData;
@@ -66,10 +66,11 @@ const Config: {
       number: "60102357477",
     },
     facebook: {
-      href: "https://www.facebook.com/profile.php?id=61554822640142",
-      msgLink: "https://www.facebook.com/messages/t/220727884446848",
+      href: "https://www.facebook.com/profile.php?id=61561847562658",
+      msgLink: "https://www.facebook.com/messages/t/356762790860601",
     },
     whatsapp: {
+      number: "60102357477",
       href: "https://wa.me/60102357477",
     },
     instagram: {
@@ -109,9 +110,9 @@ const Config: {
     }, // 28 July 2023 - Storytelling Contest
   ],
   hero: {
-    picture1: LowDefLogo,
-    picture2: LowDefLogo,
-    picture3: LowDefLogo,
+    picture1: TiltCardPic3,
+    picture2: TiltCardPic1,
+    picture3: TiltCardPic2,
   },
   navigationLinks: [
     {
@@ -135,9 +136,9 @@ const Config: {
       // },
     },
     "Footer.Top.Category.connect": {
-      // "Footer.Top.SubCategory.contactUs": {
-      //   href: "/#contact",
-      // },
+      "Footer.Top.SubCategory.contactUs": {
+        href: "/#contact",
+      },
       // "Footer.Top.SubCategory.career": {
       //   href: "/careers",
       // },
