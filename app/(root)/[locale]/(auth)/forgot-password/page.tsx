@@ -20,7 +20,7 @@ import { useSearchParams } from "next/navigation";
 import { CalloutQueryParameterType } from "@common/enum";
 import CustomCallout from "@components/basic/ui/callout";
 
-const ForgotPassword = async () => {
+const ForgotPassword = () => {
   const searchParams = useSearchParams();
   const errorMessage = searchParams.get(CalloutQueryParameterType.ERROR);
   const successMessage = searchParams.get(CalloutQueryParameterType.SUCCESS);
