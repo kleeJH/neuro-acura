@@ -22,13 +22,49 @@ const config: Config = {
       colors: {
         textDefault: "var(--text-default)",
         textLink: "var(--text-link)",
-
         background: "var(--background)",
         foreground: "var(--foreground)",
-
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         accent: "var(--accent)",
+
+        /* from shadcn */
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
       },
       dropShadow: {
         sm: "0 1px 1px var(--drop-shadow-color)",
@@ -45,7 +81,6 @@ const config: Config = {
           "0 8px 5px var(--drop-shadow-color)",
         ],
         "2xl": "0 25px 25px var(--drop-shadow-color)",
-
         star: [
           "0 4px 3px var(--star-drop-shadow)",
           "0 2px 2px var(--star-drop-shadow)",
@@ -66,8 +101,15 @@ const config: Config = {
         nav: "1080px",
         "3xl": "1921px",
       },
+
+      /* from shadcn */
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

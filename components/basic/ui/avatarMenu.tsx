@@ -4,7 +4,7 @@ import { RadixColorOptions } from "@common/enum";
 import { Avatar, Box, Button, DropdownMenu } from "@radix-ui/themes";
 import { useUserStore } from "@stores/useUserStore";
 import { signOutAction } from "@utils/supabase/actions";
-import { Settings, LogOut } from "lucide-react";
+import { Settings, LogOut, User2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface AvatarMenuProps {
@@ -13,6 +13,7 @@ interface AvatarMenuProps {
 const AvatarMenu = ({ size = "2" }: AvatarMenuProps) => {
   const router = useRouter();
   const setUser = useUserStore((state) => state.setUser);
+  const user = useUserStore((state) => state.user);
 
   const handleLogout = async () => {
     await signOutAction(); // Supabase logout
@@ -44,6 +45,11 @@ const AvatarMenu = ({ size = "2" }: AvatarMenuProps) => {
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
+        <DropdownMenu.Label>
+          <User2 height={16} width={16} className="mr-2" />
+          {user?.email}
+        </DropdownMenu.Label>
+        <DropdownMenu.Separator />
         <DropdownMenu.Item onSelect={() => router.push("/settings")}>
           <Settings height={16} width={16} />
           {"Settings"}

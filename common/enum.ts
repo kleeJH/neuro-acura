@@ -292,3 +292,23 @@ export enum AUTH_ROUTES {
   RESET_PASSWORD = "/settings/reset-password",
   AUTH_CALLBACK = "/auth/callback",
 }
+
+export enum BRAINWAVE_BANDS {
+  DELTA = "delta",
+  THETA = "theta",
+  ALPHA = "alpha",
+  IOBETA = "ioBeta",
+  BETA = "beta",
+  HIBETA = "hiBeta",
+  GAMMA = "gamma",
+  ALPHA1 = "alpha1",
+  ALPHA2 = "alpha2",
+}
+
+// Brain Lobes
+export enum BRAINL_LOBE {
+  Frontal = "Frontal",
+  Parietal = "Parietal",
+  Temporal = "Temporal",
+  Occipital = "Occipital",
+}

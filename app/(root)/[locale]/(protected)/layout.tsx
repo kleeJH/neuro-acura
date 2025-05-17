@@ -6,6 +6,7 @@ import MenuFloatLeftButton from "@components/basic/MenuFloatLeftButton";
 import ScrollToTopButton from "@components/basic/ScrollToTopButton";
 import Navigation from "@components/Navigation";
 import AuthListenerProvider from "@providers/authListenerProvider";
+import { ToastProvider } from "@providers/toast-provider/toastProvider";
 
 const ProtectedLayout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = await createClient();
@@ -26,14 +27,16 @@ const ProtectedLayout = async ({ children }: { children: React.ReactNode }) => {
     return redirect("/not-authenticated");
   }
   return (
-    <div className="bg-background min-h-screen">
-      <AuthListenerProvider>
-        <Navigation />
-        <div className="relative min-h-[calc(100vh - 12rem)]">{children}</div>
-      </AuthListenerProvider>
-      <ScrollToTopButton />
-      <MenuFloatLeftButton />
-    </div>
+    <ToastProvider>
+      <div className="bg-background min-h-screen">
+        <AuthListenerProvider>
+          <Navigation />
+          <div className="relative min-h-[calc(100vh - 12rem)]">{children}</div>
+        </AuthListenerProvider>
+        <ScrollToTopButton />
+        <MenuFloatLeftButton />
+      </div>
+    </ToastProvider>
   );
 };
 

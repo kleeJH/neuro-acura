@@ -5,7 +5,6 @@ import "@radix-ui/themes/styles.css";
 import type React from "react";
 
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -20,7 +19,6 @@ const LocaleLayout = ({
   if (!Object.keys(Config.locales).includes(locale as string)) notFound();
 
   const messages = useMessages();
-  unstable_setRequestLocale(locale);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

@@ -17,11 +17,13 @@ import {
   Text,
   TextField,
 } from "@radix-ui/themes";
+import { useUserStore } from "@stores/useUserStore";
 import { signInAction } from "@utils/supabase/actions";
 import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const SignIn = () => {
@@ -32,6 +34,13 @@ const SignIn = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const user = useUserStore((state) => state.user);
+  const router = useRouter();
+
+  if (user) {
+    router.push("/dashboard");
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

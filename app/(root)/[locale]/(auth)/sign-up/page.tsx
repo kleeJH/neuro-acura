@@ -18,10 +18,11 @@ import Link from "next/link";
 import Image from "next/image";
 import LowDefLogo from "@public/assets/images/logos/icon1.png";
 import Google from "@public/assets/icons/google.png";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { CalloutQueryParameterType } from "@common/enum";
 import CustomCallout from "@components/basic/ui/callout";
 import { Eye, EyeOff } from "lucide-react";
+import { useUserStore } from "@stores/useUserStore";
 
 const SignUp = () => {
   const searchParams = useSearchParams();
@@ -32,6 +33,13 @@ const SignUp = () => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const user = useUserStore((state) => state.user);
+  const router = useRouter();
+
+  if (user) {
+    router.push("/dashboard");
+  }
 
   const requirements: { label: string; test: (pwd: string) => boolean }[] = [
     {
