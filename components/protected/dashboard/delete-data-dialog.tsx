@@ -1,35 +1,103 @@
 import {
   Button,
   Flex,
-  Text,
   TextField,
   Dialog,
   Card,
   Heading,
 } from "@radix-ui/themes";
-import React from "react";
+import React, { useState } from "react";
 import { RadixColorOptions } from "@common/enum";
 import { Trash, X } from "lucide-react";
+import { useToast } from "@providers/toast-provider/toastProvider";
+import { del } from "@utils/supabase/helper";
+import { extractResponse } from "@utils/response";
+import { useUserStore } from "@stores/useUserStore";
 
 const DeleteDataDialog = () => {
-  const [deleteSessionNumber, setDeleteSessionNumber] = React.useState<
-    number | undefined
-  >(undefined);
+  const user = useUserStore((state) => state.user);
+  const { showToast } = useToast();
+  const [open, setOpen] = useState(false);
+  const [deleteSessionNumber, setDeleteSessionNumber] =
+    React.useState<number>(1);
 
-  const handleDeleteSession = () => {
-    if (deleteSessionNumber === undefined) {
-      console.error("Session number is required to delete a session.");
+  const handleDeleteSession = async () => {
+    if (deleteSessionNumber === undefined || deleteSessionNumber === 0) {
+      setOpen(false);
+      showToast({
+        title: "Error",
+        description: "Please enter a valid session number.",
+        color: "error",
+      });
       return;
     }
-    console.log("Deleted session number:", deleteSessionNumber);
+
+    const confirm = window.confirm(
+      `Are you sure you want to delete session number ${deleteSessionNumber}?`
+    );
+    if (!confirm) return;
+    setOpen(false);
+
+    const nextResponse = await del(
+      "/api/sloreta-session-data/delete-session-data",
+      {
+        user_id: user?.id,
+        session_number: deleteSessionNumber,
+      }
+    );
+    const response = await extractResponse(nextResponse);
+
+    if (response.ok) {
+      showToast({
+        title: response.status,
+        description: response.message,
+        color: "success",
+      });
+    } else {
+      showToast({
+        title: response.status,
+        description: response.message,
+        color: "error",
+      });
+    }
   };
 
-  const handleDeleteAllData = () => {
-    console.log("Deleted all data.");
+  const handleDeleteAllData = async () => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete all data? This action cannot be undone."
+    );
+    if (!confirm) return;
+    setOpen(false);
+
+    const nextResponse = await del(
+      "/api/sloreta-session-data/delete-all-data",
+      {
+        user_id: user?.id,
+      }
+    );
+    const response = await extractResponse(nextResponse);
+
+    if (response.ok) {
+      showToast({
+        title: response.status,
+        description: response.message,
+        color: "success",
+      });
+    } else {
+      showToast({
+        title: response.status,
+        description: response.message,
+        color: "error",
+      });
+    }
+  };
+
+  const openChange = (newOpen: boolean) => {
+    setOpen(newOpen);
   };
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={openChange}>
       <Dialog.Trigger>
         <Button
           variant="solid"

@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server'
 import supabase from "../../../../utils/supabase/adminClient.ts";
+import { PostgrestError } from '@supabase/supabase-js';
+import { nextBadRequestResponse, nextErrorResponse, nextJsonResponse } from "../../../../utils/response.ts";
 
 export async function POST(request) {
     try {
@@ -41,8 +42,8 @@ export async function POST(request) {
                 .eq('user_id', body.user_id)
 
             if (deleteError) {
-                console.log("Error deleting existing session data:", deleteError)
-                return NextResponse.json({ error: deleteError.message }, { status: 500 })
+                // console.log("Error deleting existing session data:", deleteError)
+                throw new deleteError;
             }
         }
 
@@ -55,8 +56,8 @@ export async function POST(request) {
             .select()
 
         if (newSessionError) {
-            console.log("Error inserting into sloreta_sessions:", newSessionError)
-            return NextResponse.json({ error: newSessionError.message }, { status: 500 })
+            // console.log("Error inserting into sloreta_sessions:", newSessionError)
+            throw new newSessionError;
         }
 
         const sessionId = newSessionData[0]?.id
@@ -84,13 +85,17 @@ export async function POST(request) {
             .select()
 
         if (brainwaveBandError) {
-            console.log("Error inserting into sloreta_brainwave_data:", brainwaveBandError)
-            return NextResponse.json({ error: brainwaveBandError.message }, { status: 500 })
+            // console.log("Error inserting into sloreta_brainwave_data:", brainwaveBandError)
+            throw new brainwaveBandError;
         }
 
-        return NextResponse.json({ message: 'Data inserted into the database' }, { status: 200 })
+        return nextJsonResponse('Data inserted into the database.', 200, 'Saved!');
     } catch (err) {
-        console.log("Error:", err)
-        return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+        // console.log("Error:", err)
+        if (err instanceof PostgrestError) {
+            return nextErrorResponse(err.message, err.code);
+        } else {
+            return nextBadRequestResponse('There was an issue when inserting the session data.');
+        }
     }
 }

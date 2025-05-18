@@ -16,6 +16,8 @@ import { AlertTriangle, Plus } from "lucide-react";
 import { BRAINWAVE_BANDS } from "@common/enum";
 import { useUserStore } from "@stores/useUserStore";
 import { useToast } from "@providers/toast-provider/toastProvider";
+import { post } from "@utils/supabase/helper";
+import { extractResponse } from "@utils/response";
 
 type FieldConfig = {
   dbLabel: string;
@@ -277,25 +279,22 @@ const AddSessionDataDialog = () => {
       })),
     };
 
-    const res = await fetch("/api/sloreta-session-data/create-session-data", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(finalData),
-    });
+    const nextResponse = await post(
+      "/api/sloreta-session-data/create-session-data",
+      finalData
+    );
+    const response = await extractResponse(nextResponse);
 
-    const json = await res.json();
-    if (res.ok) {
+    if (response.ok) {
       showToast({
-        title: "Saved!",
-        description: json.message,
+        title: response.status,
+        description: response.message,
         color: "success",
       });
     } else {
       showToast({
-        title: "Error",
-        description: json.error,
+        title: response.status,
+        description: response.message,
         color: "error",
       });
     }
@@ -318,8 +317,11 @@ const AddSessionDataDialog = () => {
       <Dialog.Content>
         <Dialog.Title>Add Session Data</Dialog.Title>
         <Dialog.Description size="2" mb="4">
-          Add sLORETA session data to database.<br></br> If the session already
-          exists, it will overwrite the existing data.
+          Add sLORETA session data to database.
+          <br />
+          If the session already exists, it will overwrite the existing data.
+          <br />
+          Function and Possible symptoms of defect can be left blank.
         </Dialog.Description>
 
         {sessionNumber === undefined && (
