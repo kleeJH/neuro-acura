@@ -14,8 +14,7 @@ export const requestHelper = async (
   return res;
 };
 
-export const get = (url: string, data: any = undefined) =>
-  requestHelper("GET", url, data);
+export const get = (url: string) => requestHelper("GET", url);
 
 export const post = (url: string, data: any = undefined) =>
   requestHelper("POST", url, data);

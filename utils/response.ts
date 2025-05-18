@@ -49,7 +49,7 @@ type FinalResponse = {
   statusCode: number;
   status: string;
   message: string;
-  data?: (Record<string, unknown> | Array<Record<string, unknown>>) | null;
+  data?: any;
 };
 
 async function extractResponse(res: Response): Promise<FinalResponse> {

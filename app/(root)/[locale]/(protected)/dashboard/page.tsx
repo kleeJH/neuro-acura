@@ -11,14 +11,20 @@ import {
 import { useState } from "react";
 import AddSessionDataDialog from "@components/protected/dashboard/add-session-data-dialog";
 import DeleteDataDialog from "@components/protected/dashboard/delete-data-dialog";
+import DashboardDatabase from "@components/protected/dashboard/dashboard-database";
 
 const Dashboard = () => {
   const [view, setView] = useState("overview");
 
   return (
-    <Box className="p-8">
-      <Card className="p-8">
-        <Flex direction="column" className="p-6" wrap="wrap" gap="4">
+    <Box className="px-4 sm:px-6 md:px-8 lg:px-10">
+      <Card>
+        <Flex
+          direction="column"
+          className="p-2 sm:p-4 md:p-4"
+          wrap="wrap"
+          gap="4"
+        >
           <Flex
             direction="row"
             justify="between"
@@ -35,31 +41,29 @@ const Dashboard = () => {
               <DeleteDataDialog />
             </Flex>
           </Flex>
-          <Flex
-            direction="row"
-            gap="3"
-            className="max-w-[200px]"
-            justify="start"
-          >
+          <Flex>
             <SegmentedControl.Root
               value={view}
               onValueChange={setView}
-              radius="large"
               size={{ initial: "1", xs: "1", sm: "2", md: "2" }}
             >
               <SegmentedControl.Item value="overview">
                 Overview
               </SegmentedControl.Item>
               <SegmentedControl.Item value="individual-session">
-                Individual Session
+                Session
+              </SegmentedControl.Item>
+              <SegmentedControl.Item value="database">
+                Database
               </SegmentedControl.Item>
             </SegmentedControl.Root>
           </Flex>
-          <Box className="mt-6">
+          <Box>
             {view === "overview" && <Text>Overview Content</Text>}
             {view === "individual-session" && (
               <Text>Individual Session Content</Text>
             )}
+            {view === "database" && <DashboardDatabase />}
           </Box>
         </Flex>
       </Card>
