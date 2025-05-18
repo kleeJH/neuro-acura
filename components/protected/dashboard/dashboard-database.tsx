@@ -36,7 +36,7 @@ const DashboardDatabase = () => {
   return (
     <>
       {data.map((session) => (
-        <div id={session.id.toString()} className="mt-4">
+        <div key={session.id} className="mt-4">
           <Heading
             size={{ initial: "5", sm: "6" }}
             color={RadixColorOptions.CYAN}
