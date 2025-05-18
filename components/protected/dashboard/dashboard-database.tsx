@@ -31,7 +31,7 @@ const DashboardDatabase = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [showToast, user]);
 
   return (
     <>
