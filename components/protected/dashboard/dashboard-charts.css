@@ -1,0 +1,119 @@
+/* Dashboard Chart Styles */
+
+/* Responsive container adjustments */
+.recharts-responsive-container {
+  min-height: 300px;
+  width: 100% !important;
+}
+
+/* Make sure the chart elements are properly visible on mobile */
+@media (max-width: 640px) {
+  .recharts-text {
+    font-size: 10px;
+  }
+
+  .recharts-legend-item-text {
+    font-size: 10px;
+  }
+
+  .recharts-responsive-container {
+    min-height: 250px;
+  }
+}
+
+/* Add some hover effects on chart elements */
+.recharts-bar-rectangle:hover {
+  opacity: 0.8;
+}
+
+.recharts-pie-sector:hover {
+  opacity: 0.9;
+}
+
+/* Set axis labels color to match theme */
+.recharts-cartesian-axis-tick-value,
+.recharts-polar-angle-axis-tick-value,
+.recharts-radial-bar-axis-tick-value,
+.recharts-text,
+.recharts-label,
+.recharts-layer text,
+.recharts-pie-label-text {
+  fill: var(--text-default) !important;
+  color: var(--text-default) !important;
+}
+
+/* Ensure chart lines use theme grid colors */
+.recharts-cartesian-grid line,
+.recharts-polar-grid-angle line,
+.recharts-polar-grid-concentric line {
+  stroke: var(--border-color) !important;
+  opacity: 0.6;
+}
+
+/* Improve tooltips visibility */
+.recharts-tooltip-wrapper {
+  z-index: 10;
+}
+
+.recharts-default-tooltip {
+  background-color: var(--background) !important;
+  border: 1px solid var(--foreground) !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Chart card styling */
+.chart-card {
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Chart title styling */
+.chart-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: center;
+  color: var(--text-default);
+}
+
+/* Full width charts for better visibility */
+.full-width-chart {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Grid layout for dashboard charts */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+/* For mobile view, use single column */
+@media (max-width: 768px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .chart-card {
+    background-color: var(--background);
+  }
+
+  .chart-title {
+    color: var(--text-default);
+  }
+}

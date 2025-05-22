@@ -12,16 +12,18 @@ import { useState } from "react";
 import AddSessionDataDialog from "@components/protected/dashboard/add-session-data-dialog";
 import DeleteDataDialog from "@components/protected/dashboard/delete-data-dialog";
 import DashboardDatabase from "@components/protected/dashboard/dashboard-database";
+import DashboardOverview from "@components/protected/dashboard/dashboard-overview";
+import DashboardIndividualSession from "@components/protected/dashboard/dashboard-individual-session";
 
 const Dashboard = () => {
   const [view, setView] = useState("overview");
 
   return (
-    <Box className="px-4 sm:px-6 md:px-8 lg:px-10">
-      <Card>
+    <Box className="px-2 sm:px-6 md:px-8 lg:px-10">
+      <Card className="overflow-hidden">
         <Flex
           direction="column"
-          className="p-2 sm:p-4 md:p-4"
+          className="p-3 sm:p-5 md:p-6"
           wrap="wrap"
           gap="4"
         >
@@ -59,10 +61,8 @@ const Dashboard = () => {
             </SegmentedControl.Root>
           </Flex>
           <Box>
-            {view === "overview" && <Text>Overview Content</Text>}
-            {view === "individual-session" && (
-              <Text>Individual Session Content</Text>
-            )}
+            {view === "overview" && <DashboardOverview />}
+            {view === "individual-session" && <DashboardIndividualSession />}
             {view === "database" && <DashboardDatabase />}
           </Box>
         </Flex>
