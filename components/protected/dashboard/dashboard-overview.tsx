@@ -155,7 +155,7 @@ const DashboardOverview = () => {
   };
 
   // Prepare data for Line Chart (Z-score trends for each brainwave)
-  const prepareZScoreTrendData = () => {
+  const prepareZScoreLineTrendData = () => {
     // First, organize data by session
     const sessionData: Record<number, Record<string, number>> = {};
 
@@ -215,7 +215,7 @@ const DashboardOverview = () => {
   const zScoreBarData = prepareZScoreBarData();
   const frequencyStackData = prepareFrequencyStackData();
   const pieData = preparePieData();
-  const lineData = prepareZScoreTrendData();
+  const lineData = prepareZScoreLineTrendData();
 
   return (
     <Box className="mt-4">
