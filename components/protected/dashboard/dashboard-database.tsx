@@ -491,7 +491,7 @@ const DashboardDatabase = () => {
         className="mb-4 sm:mb-6"
         style={{ wordBreak: "break-word" }}
       >
-        Brainwave Data
+        Database
       </Heading>
 
       {/* Controls Panel */}
@@ -606,17 +606,22 @@ const DashboardDatabase = () => {
             <Flex direction="column" gap="1">
               <Flex justify="between" wrap="wrap" gap="2" className="w-full">
                 <Box>
-                  <Flex align="center" gap="2">
-                    <Text weight="bold" size={{ initial: "2", sm: "3" }}>
-                      Session Date:
+                  <Flex direction="column">
+                    <Flex align="center" gap="2">
+                      <Text weight="bold" size={{ initial: "2", sm: "3" }}>
+                        Upload Date:
+                      </Text>
+                      <Text size={{ initial: "2", sm: "3" }}>
+                        {new Date(activeSession.created_at).toLocaleString()}
+                      </Text>
+                    </Flex>
+                    <Text size="2" color="gray" className="mt-1">
+                      Database ID: {activeSession.id}
                     </Text>
-                    <Text size={{ initial: "2", sm: "3" }}>
-                      {new Date(activeSession.created_at).toLocaleString()}
+                    <Text size="2" color="gray" className="mt-1">
+                      Session Number: {activeSession.session_number}
                     </Text>
                   </Flex>
-                  <Text size="2" color="gray" className="mt-1">
-                    Session ID: {activeSession.id}
-                  </Text>
                 </Box>
 
                 <Box className="hidden md:block">
