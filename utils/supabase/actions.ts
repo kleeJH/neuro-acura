@@ -13,7 +13,7 @@ import { redirect } from "next/navigation";
 const getAuthErrorMessage = (errorCode: string) => {
   switch (errorCode) {
     case SupabaseAuthErrorCodes.INVALID_CREDENTIALS:
-      return "Incorrect username or password. Please try again.";
+      return "Incorrect username or password. Please try again, or this email might not have an account.";
     case SupabaseAuthErrorCodes.EMAIL_EXISTS:
       return "Email address is already registered.";
     case SupabaseAuthErrorCodes.WEAK_PASSWORD:
