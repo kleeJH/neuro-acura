@@ -76,14 +76,12 @@ const Navigation = ({
             </ul>
           )}
 
-          <DesktopNavigation hasNavLinks={hasNavLinks} />
-          {hasNavLinks && (
-            <MobileNavigation
-              hasNavLinks={hasNavLinks}
-              active={active}
-              setActive={setActive}
-            />
-          )}
+          {hasNavLinks && <DesktopNavigation />}
+          <MobileNavigation
+            hasNavLinks={hasNavLinks}
+            active={active}
+            setActive={setActive}
+          />
         </div>
       </nav>
     </>

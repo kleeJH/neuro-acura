@@ -2,14 +2,19 @@
 import { useEffect } from "react";
 import { useUserStore } from "@stores/useUserStore";
 import { createClient } from "@utils/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 const supabase = createClient();
 
+interface AuthListenerProviderProps {
+  children: React.ReactNode;
+  initialUser?: User | null;
+}
+
 export default function AuthListenerProvider({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+  initialUser = null,
+}: AuthListenerProviderProps) {
   const setUser = useUserStore((state) => state.setUser);
 
   useEffect(() => {
@@ -23,6 +28,11 @@ export default function AuthListenerProvider({
         if (isMounted) setUser(data.user ?? null);
       }, 100); // 100ms delay
     };
+
+    // Hydrate store immediately from server provided user (no flash of unauthenticated UI)
+    if (initialUser) {
+      setUser(initialUser);
+    }
 
     syncUser();
 

@@ -7,11 +7,7 @@ import { useUserStore } from "@stores/useUserStore";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const DesktopNavigation = ({
-  hasNavLinks = true,
-}: {
-  hasNavLinks: boolean;
-}) => {
+const DesktopNavigation = () => {
   const pathname = usePathname();
 
   const user = useUserStore((state) => state.user);
@@ -20,11 +16,7 @@ const DesktopNavigation = ({
     pathname.includes("sign-in") || pathname.includes("sign-up");
 
   return (
-    <div
-      className={`flex gap-10 items-center ${
-        hasNavLinks ? "max-nav:hidden" : ""
-      }`}
-    >
+    <div className="hidden nav:flex gap-10 items-center">
       <>
         {user ? (
           <AvatarMenu size="3" />
